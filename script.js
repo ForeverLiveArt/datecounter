@@ -91,8 +91,8 @@ function calculateOPV(x) {
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
         $('#table1').find('tbody').append( //пишет первую дату
             '<tr>' + 
-                '<td colspan="2 "><h3>' + dateCounter[0].toFormat('dd.MM.yyyy') + '</h3></td>' + 
-                '<td colspan="4"><h3>Цикл ' + cycle + '</h3></td>' + 
+                '<td colspan="2 "><h4>' + dateCounter[0].toFormat('dd.MM.yyyy') + '</h4></td>' + 
+                '<td colspan="4"><h4>Цикл ' + cycle + '</h3></td>' + 
             '</tr>'
         );
 
@@ -103,8 +103,8 @@ function calculateOPV(x) {
                 cycle += 1;
                 $('#table1').find('tbody').append(
                     '<tr>' + 
-                        '<td colspan="2"><h3>' + dateCounter[i].year + '</h3></td>' + 
-                        '<td colspan="4"><h3>Цикл ' + cycle + '</h3></td>' + 
+                        '<td colspan="2"><h4>' + dateCounter[i].year + '</h4></td>' + 
+                        '<td colspan="4"><h4>Цикл ' + cycle + '</h4></td>' + 
                     '</tr>'
                 );
             }
@@ -156,11 +156,6 @@ function calculateOPV(x) {
 
 function savePDF() {
     var doc = new jsPDF();
-
-    doc.addFileToVFS(HelveticaRegular.ttf, Base64content);
-
-    doc.addFont('HelveticaRegular.ttf', 'HelveticaRegular', 'normal');
-    doc.setFont('HelveticaRegular');
 
     doc.autoTable({ html: '#table1' });
     doc.autoTable({ html: '#table2' });
