@@ -112,14 +112,14 @@ function calculateOPV(x) {
             OPV2[i] = ttrule(OPV1[i] - KCH);
             OPV3[i] = ttrule(OPV1[i] + OPV2[i] + KCH + IEB);
             //считает возраст в годах и месяцах
-            diffInTime[i] = dateCounter[i + 1].diff(dateCounter[0], ['years', 'months']);
+            diffInTime[i] = dateCounter[i + 1].diff(dateCounter[0], ['years', 'months', 'days']);
             diffInTime[i].toObject(); 
 
             //cоздает таблицу ОПВ
             $('#table1').find('tbody').append (
                 '<tr>' +
                     '<td>' + dateCounter[i].toFormat('dd.MM.yyyy') + ' – ' + dateCounter[i + 1].toFormat('dd.MM.yyyy') + '</td>' +
-                    '<td>' + diffInTime[i].years.toFixed(0) + ', ' + diffInTime[i].months.toFixed(0) + '</td>' +
+                    '<td>' + diffInTime[i].years.toFixed(0) + ', ' + diffInTime[i].months.toFixed(0) + ', ' + diffInTime[i].days.toFixed(0) + '</td>' +
                     '<td>' + OPV1[i] + '</td>' + '<td>' + OPV2[i] + '</td>' + '<td>' + OPV3[i] + '</td>' + 
                 '</tr>'
             );
@@ -147,7 +147,7 @@ function calculateOPV(x) {
     } else {
         $('#alerts').prepend( //текст ошибки даты
             '<div id="lertx" class="alert alert-light alert-dismissible fade show" role="alert">' +
-            'Дата вверна некорректно.' +
+            'Дата введена некорректно.' +
             '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
             '</div>');
     }
