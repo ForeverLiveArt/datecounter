@@ -34,23 +34,23 @@
   				<input type="number" id="dateInputDay" class="form-control" 
   					   placeholder="ДД" aria-label="День" 
   					   aria-describedby="basic-addon1" 
-  					   min="1" max="31" step="1" maxlength=2 
+  					   min="01" max="31" step="1" maxlength=2 
   					   onkeyup="moveOnMax(this, 'dateInputMonth')"
-  					   onchange="checkDate()">
+  					   onchange="checkDate()" pattern="[00-09]{2}">
   	
   				<input type="number" id="dateInputMonth" class="form-control" 
   					   placeholder="ММ" aria-label="Месяц" 
   					   aria-describedby="basic-addon1"
-  					   min="1" max="12" step="1" maxlength=2 
+  					   min="01" max="12" step="1" maxlength=2 
   					   onkeyup="moveOnMax(this, 'dateInputYear')"
-  					   onchange="checkDate()">
+  					   onchange="checkDate()" pattern="[00-09]{2}">
 
   				<input type="number" id="dateInputYear" class="form-control" 
   					   placeholder="ГГГГ" aria-label="Год" 
   					   aria-describedby="basic-addon1"
   					   min="1799" max="2021" step="1" maxlength=4 
   					   onkeyup="moveOnMax(this, 'dateInputYear')"
-  					   onchange="checkDate()">
+  					   onchange="checkDate()" pattern="[0-9]{4}">
 
 			</div>
 

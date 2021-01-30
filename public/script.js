@@ -7,6 +7,7 @@ var REGRETSage = ["0,0", "0,9", "0,10", "2,3", "2,4", "4,6", "4,7", "7,6",
 ];
 
 
+
 function make2Darray(cols, rows) {
     var arr = new Array(cols);
     for (let i = 0; i < arr.length; i++) {
@@ -15,26 +16,18 @@ function make2Darray(cols, rows) {
     return arr;
 }
 
-
 function makeREGRETSarray() {
-    REGRETSarray = make2Darray(12, 22); //Cоздать таблицу 12 на 22
-    for (let i = 0; i < 12; i++) { //перемещать циклично по столбцам
-        for (let j = 0; j < 22; j++) { //перемещение по строкам
+    REGRETSarray = make2Darray(12, 22); 
+    for (let i = 0; i < 12; i++) { 
+        for (let j = 0; j < 22; j++) { 
             if (j <= i) {
-                REGRETSarray[i][j] = i + 1; //если строка равна или меньше столбца - приравнять ячейку столбцу
+                REGRETSarray[i][j] = i + 1; 
             } else {
-                REGRETSarray[i][j] = ttrule(REGRETSarray[i][j - 1] + 2); //а если не равна - добавить 2 к ячейке выше учитывая правило 22
+                REGRETSarray[i][j] = ttrule(REGRETSarray[i][j - 1] + 2); 
             }
         }
     }
-    console.log(REGRETSarray);
 }
-
-
-//document.getElementById("ddlLanguage").addEventListener("change", function() {
-//language change
-//});
-
 
 function moveOnMax(field, nextFieldID) {
     if (field.value.length >= field.maxLength) {
@@ -44,23 +37,14 @@ function moveOnMax(field, nextFieldID) {
 
 
 function checkDate() { //валидация ввода
-    if (($('#dateInputYear').val().length !== 0) && ($('#dateInputMonth').val().length !== 0) && ($('#dateInputDay').val().length !== 0)) {
+    if (($('#dateInputYear').val().length > 1) && ($('#dateInputMonth').val().length > 1) && ($('#dateInputDay').val().length > 1)) {
         datestring = $('#dateInputYear').val() + '-' + $('#dateInputMonth').val() + '-' + $('#dateInputDay').val();
+
         $('#lertx').remove(); //очистить ошибки если их нет
-
-        if ($('select#tableSelector option:checked').val() == 1) { //определение выбранной таблицы
-            $('#contentREGRETS').css('display', 'none');
-            $('#contentOPV').css('display', 'initial');
-        }
-
-        if ($('select#tableSelector option:checked').val() == 2) { //определение выбранной таблицы
-            $('#contentOPV').css('display', 'none');
-            $('#contentREGRETS').css('display', 'initial');
-        }
-
-        calculateOPV(datestring);
+        calculateOPV(datestring);        
     }
 }
+
 
 function sumDigits(n) { //cуммирует цифры числа
     let sum = 0;
@@ -84,35 +68,64 @@ function ttrule(z) { //22 по модулю
     return Math.abs(z);
 }
 
+
 function calculateOPV(x) {
 
     startDate = luxon.DateTime.fromFormat(x, 'yyyy-MM-dd');
     //var now = luxon.DateTime.local(); 
-    // Рассчеты аркана
-    let dayArcane = ttrule(startDate.day);
-    let monthArcane = ttrule(sumDigits(startDate.month));
-    let yearArcane = ttrule(sumDigits(startDate.year));
-    // Рассчеты ОПВ и сожаления
-    var OPV1 = [];
-    OPV1[0] = ttrule(dayArcane - monthArcane);
-    var OPV2 = [];
-    var OPV3 = [];
-    var KCH = ttrule(yearArcane - dayArcane);
-    var IEB = ttrule(yearArcane - monthArcane);
-    var REGRETS = [];
-    REGRETS[0] = ttrule(REGRETSarray[dayArcane - 1][parseInt(startDate.month) - 1] + OPV1[0]);
-
-    var dateCounter = [];
-    dateCounter[0] = startDate;
-
-    let i = 0;
-    let j = 0;
-    let k = 0;
-    let intervals = 22; //количество сотен в цикле
-    let cycle = 1;
-    let diffInTime = [];
-
+    
     if (startDate.isValid) { //проверка даты на валидность
+        if ($('select#tableSelector option:checked').val() == 1) { //определение выбранной таблицы
+            $('#contentREGRETS').css('display', 'none');
+            $('#contentOPV').css('display', 'initial');
+        }
+
+        if ($('select#tableSelector option:checked').val() == 2) { //определение выбранной таблицы
+            $('#contentOPV').css('display', 'none');
+            $('#contentREGRETS').css('display', 'initial');
+        }    
+
+        // Рассчеты аркана
+        let dayArcane = ttrule(startDate.day);
+        let monthArcane = ttrule(startDate.month);
+        let yearArcane = ttrule(sumDigits(startDate.year));
+        // Рассчеты ОПВ и CЖ
+        var OPV1 = [];
+        OPV1[0] = ttrule(dayArcane - monthArcane);
+        var OPV2 = [];
+        var OPV3 = [];
+        var KCH = ttrule(yearArcane - dayArcane);
+        var KCH2 = dayArcane + (8 * monthArcane) + yearArcane;
+        var IEB = ttrule(yearArcane - monthArcane);
+        var OGE = dayArcane + (7 * monthArcane) + yearArcane;
+        var ELS = 
+        var TPE = dayArcane + monthArcane;
+        var HTP = dayArcane + (9 * monthArcane) + yearArcane;
+        var DTP = dayArcane + (3 * monthArcane) + yearArcane;
+        var PTP = ESZ - OPV1[0];
+        var TPD = TPE + monthArcane;
+        var KAS = OPV1[0] - IEB;
+        var ZKA = dayArcane + (2 * monthArcane) + yearArcane;
+        var ZDE = dayArcane + (5 * monthArcane) + yearArcane;
+        var ZES = dayArcane + yearArcane;
+        var ESZ = dayArcane + monthArcane + yearArcane;
+        //var PER = 
+        //var TI = 6 * 
+        //var TIE
+        //var PRPJ
+        //var ZEO
+        //var ZEZE
+
+        var REGRETS = [];
+        REGRETS[0] = ttrule(REGRETSarray[ttrule(parseInt(startDate.month)) - 1][ttrule(parseInt(startDate.day)) - 1] + OPV1[0]);
+
+        var dateCounter = [];
+        dateCounter[0] = startDate;
+
+        let i = 0;
+        let intervals = 22; //количество сотен в цикле
+        let cycle = 1;
+        let diffInTime = [];
 
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
         $('#table1').find('tbody').append( //пишет первую дату
@@ -121,7 +134,6 @@ function calculateOPV(x) {
             '<td colspan="4"><h4>Цикл ' + cycle + '</h3></td>' +
             '</tr>'
         );
-
         while (i != 220) { //Цикл заполнения таблицы
             dateCounter[i + 1] = dateCounter[i].plus({ days: 100 });
             if (i == intervals) { //отделяет 22 цикла
@@ -140,7 +152,6 @@ function calculateOPV(x) {
             //считает возраст в годах и месяцах
             diffInTime[i] = dateCounter[i + 1].diff(dateCounter[0], ['years', 'months', 'days']);
             diffInTime[i].toObject();
-
             //cоздает таблицу ОПВ
             $('#table1').find('tbody').append(
                 '<tr>' +
@@ -151,6 +162,9 @@ function calculateOPV(x) {
             );
             i = i + 1;
         }
+
+        let j = 0;
+        let k = 0;
         //cоздает таблицу СЖ
         $("#table2 tbody tr").remove();
         while (j < REGRETSage.length) {
