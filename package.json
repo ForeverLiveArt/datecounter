@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/ForeverLiveArt/datecounter#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "luxon": "^1.25.0"
   }
 }
