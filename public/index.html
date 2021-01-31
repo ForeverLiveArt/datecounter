@@ -3,7 +3,23 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<!-- Primary Meta Tags -->
 		<title>Cчетчик нумеролога</title>
+		
+		<meta name="title" content="Numerology">
+		<meta name="description" content="Calculate your date and name to learn about your number right now.">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://coxo.digital/">
+		<meta property="og:title" content="Numerology">
+		<meta property="og:description" content="Calculate your date and name to learn about your number right now.">
+		<meta property="og:image" content="image.jpg">
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://coxo.digital/">
+		<meta property="twitter:title" content="Numerology">
+		<meta property="twitter:description" content="Calculate your date and name to learn about your number right now.">
+		<meta property="twitter:image" content="image.jpg">
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -13,7 +29,7 @@
 							   crossorigin="anonymous">
 	</head>
 
-	<body onload="makeRegretsArray()" onload="checkDate()">
+	<body onload="makeRegretsArray()">
 
 		<div class="container-sm" style="padding-top: 2.22rem; max-width: 40rem">
 			<div class="input-group mb-3" style="display: none;">
@@ -26,7 +42,7 @@
             	</select>
    			</div>
 
-			<div class="input-group mb-3">
+			<div class="input-group mb-3" onload="checkDate()">
 
   				<span class="input-group-text" id="basic-addon1">
   					Дата
