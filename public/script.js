@@ -98,14 +98,14 @@ async function calculateOPV(dateString) {
     startDate = DateTime.fromFormat(dateString, 'yyyy-MM-dd');
     //var now = luxon.DateTime.local(); 
     if (startDate.isValid) { //проверка даты на валидность
-        if ($('select#tableSelector option:checked').val() == 1) { //определение выбранной таблицы
+        /*if ($('select#tableSelector option:checked').val() == 1) { //определение выбранной таблицы
             $('#contentregrets').css('display', 'none');
             $('#contentOPV').css('display', 'initial');
         }
         if ($('select#tableSelector option:checked').val() == 2) { //определение выбранной таблицы
             $('#contentOPV').css('display', 'none');
             $('#contentregrets').css('display', 'initial');
-        }
+        }*/
 
         const options = {
             method: 'POST',
@@ -158,9 +158,11 @@ async function calculateOPV(dateString) {
                 Durimp(answer.diffInTime[i]).days.toFixed(0) + '</td>' +
                 '<td>' + answer.opv1[i] + '</td>' + '<td>' + answer.opv2[i] + '</td>' + '<td>' + answer.opv3[i] + '</td>' +
                 '</tr>'
+
             );
             i = i + 1;
         }
+
         //______________________________________________________________________
 
         //______________________________________________________________________SECOND TABLE
@@ -169,15 +171,27 @@ async function calculateOPV(dateString) {
 
         for (let k = 0, j = 0; j < regretsAge.length; k++, j = j + 2) {
             $('#table2').find('tbody').append(
+                '<tr data-bs-toggle="collapse"' +
+                    'data-bs-target="#collapseExample' + k + '"' +
+                    'aria-expanded="false"' +
+                    'aria-controls="collapseExample' + k + '">' +
+                        '<td>' + startDate.plus({ years: regretsAge[j].split(",")[0], month: regretsAge[j].split(",")[1] }).toFormat('dd.MM.yyyy') +
+                        ' – ' + startDate.plus({ years: regretsAge[j + 1].split(",")[0], month: regretsAge[j + 1].split(",")[1] }).toFormat('dd.MM.yyyy') +
+                        '<td>' + regretsAge[j] + ' – ' + regretsAge[j + 1] + '</td>' +
+                        '<td>' + answer.regrets[k] + '</td>' +
+                '</tr>' +
                 '<tr>' +
-                '<td>' + startDate.plus({ years: regretsAge[j].split(",")[0], month: regretsAge[j].split(",")[1] }).toFormat('dd.MM.yyyy') +
-                 ' – ' + startDate.plus({ years: regretsAge[j + 1].split(",")[0], month: regretsAge[j + 1].split(",")[1] }).toFormat('dd.MM.yyyy') +
-                '<td>' + regretsAge[j] + ' – ' + regretsAge[j + 1] + '</td>' +
-                '<td>' + answer.regrets[k] + '</td>' +
+                    '<td colspan="3" class="collapse multi-collapse mt-3" id="collapseExample' + k + '">' +
+                        '<div class="fs-6 p-3">' +
+                            regretsTextArray[1] +
+                        '</div>' +
+                    '</td>' +
                 '</tr>'
             );
         }
-        //______________________________________________________________________
+
+        //_____________________________________________________________________
+
 
     } else {
         $('#alerts').prepend( //текст ошибки даты
@@ -195,3 +209,4 @@ async function calculateOPV(dateString) {
     doc.autoTable({ html: '#table2' });
     doc.save(startDate.toFormat('dd.MM.yyyy') + '.pdf');
 }*/
+

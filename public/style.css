@@ -1,20 +1,27 @@
 /* Display URL of hyperlinks when printing */
 @media print {
-  a:after {
-    content: " (" attr(href) ")";
-  }
+    a:after {
+        content: " ("attr(href) ")";
+    }
 }
 
 div.alert:nth-child(1) {
-  background-color: aliceblue;
+    background-color: aliceblue;
 }
 
 .input-group-text {
-  background-color: #fff!important;
+    background-color: #fff !important;
 }
 
-thead { position: sticky; top: 0; background-color: white; }
+thead {
+    p osition: sticky;
+    top: 0;
+    background-color: white;
+    border: white !important;
+
+}
 
 .container-sm {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 }
+

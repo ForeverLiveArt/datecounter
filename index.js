@@ -90,28 +90,30 @@ app.post('/api', (request, response) => {
     let opv2 = [];
     let opv3 = [];
     //______________________________________________________________________
+    let ieb = ttrule(yearArcane - monthArcane);
+
     let kch = ttrule(yearArcane - dayArcane);
     let kch2 = dayArcane + (8 * monthArcane) + yearArcane;
+	
     let oge = dayArcane + (7 * monthArcane) + yearArcane;
     let htp = dayArcane + (9 * monthArcane) + yearArcane;
-    let dtp = dayArcane + (3 * monthArcane) + yearArcane;
     let zka = dayArcane + (2 * monthArcane) + yearArcane;
-    let zde = dayArcane + (5 * monthArcane) + yearArcane;
-    let ieb = ttrule(yearArcane - monthArcane);
+    let dtp = dayArcane + (3 * monthArcane) + yearArcane;
+    let prpj = dayArcane + (4 * monthArcane) + yearArcane;    
+    let zde = dayArcane + (5 * monthArcane) + yearArcane; 
+    let tii = (6 * dayArcane) + (6 * monthArcane) + (5 * yearArcane);  
     let tpe = dayArcane + monthArcane;
     let zes = dayArcane + yearArcane;
     let tpd = tpe + monthArcane;
     let kas = opv1[0] - ieb;
-
     let esz = dayArcane + monthArcane + yearArcane;
-    let ptp = esz - opv1[0];
-    //var ELS =
-    //var PER = 
-    //var TI = 
-    //var TIE
-    //var PRPJ
-    //var ZEO
-    //var ZEZE
+    let ptp = esz - monthArcane;
+    let els = esz - opv1[0];
+    //let per = nameArcane + (9 * monthArcane) + yearArcane;
+
+    //let tie = esz + zka + nameArcane;   
+    //let zeo = esz + per
+    //let zez = esz - per
 
     //______________________________________________________________________OPV 123 ARRAYS
     let dateCounter = [];
@@ -149,8 +151,7 @@ app.post('/api', (request, response) => {
     for (let k = 0, j = 0; j < regretsAge.length; k++, j = j + 2) {
         regrets[k + 1] = ttrule(regrets[k] + 1);
     }
-
-
+    //______________________________________________________________________
 
     response.json({
         dateCounter: dateCounter,
