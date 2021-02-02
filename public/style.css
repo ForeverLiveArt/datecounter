@@ -25,3 +25,6 @@ thead {
     padding-bottom: 20px;
 }
 
+.show-read-more .more-text{
+    display: none;
+}

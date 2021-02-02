@@ -128,6 +128,9 @@ async function calculateOPV(dateString) {
         let intervals = 22; //количество сотен в цикле
         let cycle = 1;
 
+        $('#myTabContent').css('display', 'none');
+        $('#spinners').css('display', 'initial');
+
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
 
         $('#table1').find('tbody').append( //пишет первую дату
@@ -182,18 +185,46 @@ async function calculateOPV(dateString) {
                 '</tr>' +
                 '<tr>' +
                     '<td colspan="3" class="collapse multi-collapse mt-3" id="collapseExample' + k + '">' +
-                        '<div class="fs-6 p-3">' +
-                            regretsTextArray[1] +
-                        '</div>' +
+                        '<div class="fs-6 p-3" ><article class="readmore">' +
+                            regretsTextArray[answer.regrets[k]] +
+                        '</article></div>' +
                     '</td>' +
                 '</tr>'
             );
-        }
 
+        }
         //_____________________________________________________________________
+        $readMoreJS.init({
+
+              // Selector of the element the plugin applies to (any CSS selector, eg: '#', '.').
+              target: '.readmore', 
+
+              // Number of words to initially display (any number). 
+              numOfWords: 45,     
+
+              // If true, user can toggle between 'read more' and 'read less'. 
+              toggle: true,              
+
+              // The text of 'Read more' link. 
+              moreLink: 'читать далее ...', 
+
+              // The text of 'Read less' link. 
+              lessLink: 'свернуть',      
+
+              // The class given to the read more link. 
+              linkClass: 'rm-link',    
+
+              // The class given to the div container of the read more link.
+              containerClass: false
+
+        });    
+        $('#spinners').css('display', 'none');
+        $('#myTabContent').css('display', 'initial');
+        $('#tabulation').css('display', 'initial');
 
 
     } else {
+        $('#spinners').css('display', 'none');
         $('#alerts').prepend( //текст ошибки даты
             '<div id="lertx" class="alert alert-light alert-dismissible fade show" role="alert">' +
             'Дата введена некорректно.' +
@@ -209,4 +240,6 @@ async function calculateOPV(dateString) {
     doc.autoTable({ html: '#table2' });
     doc.save(startDate.toFormat('dd.MM.yyyy') + '.pdf');
 }*/
+
+
 
