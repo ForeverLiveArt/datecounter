@@ -14,7 +14,6 @@ function moveOnMax(field, nextFieldID) {
 }
 
 //______________________________________________________________________
-
 //______________________________________________________________________DATE FIRST VALIDATION
 
 function checkDate() { //валидация ввода
@@ -27,7 +26,6 @@ function checkDate() { //валидация ввода
 }
 
 //______________________________________________________________________
-
 //______________________________________________________________________MAIN FUNC
 
 async function calculateOPV(dateString) {
@@ -116,33 +114,20 @@ async function calculateOPV(dateString) {
                     '</td>' +
                 '</tr>'
             );
-
         }
         //_____________________________________________________________________
 
         $readMoreJS.init({
-
-              // Selector of the element the plugin applies to (any CSS selector, eg: '#', '.').
               target: '.readmore', 
-
-              // Number of words to initially display (any number). 
               numOfWords: 45,     
-
               // If true, user can toggle between 'read more' and 'read less'. 
               toggle: true,              
-
-              // The text of 'Read more' link. 
               moreLink: 'читать далее ...', 
-
-              // The text of 'Read less' link. 
               lessLink: 'свернуть',      
-
               // The class given to the read more link. 
               linkClass: 'rm-link',    
-
               // The class given to the div container of the read more link.
               containerClass: false
-
         });    
         //_____________________________________________________________________CONTROL DISPLAY OPTIONS
         $('#spinners').css('display', 'none');
