@@ -10,22 +10,6 @@ app.use(express.json({ limit: '1mb' }));
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var { DateTime } = require('luxon');
 DateTime.local();
 
@@ -146,8 +130,7 @@ app.post('/kids_api', (request, response) => {
     //______________________________________________________________________OPV 123 ARRAYS
     let dateCounter = [];
     dateCounter[0] = startDate;
-    let intervals = 22; //количество 22 в цикле
-    let cycle = 1;
+
     let diffInTime = [];
     let i = 0;
     while (i != 220) { //Цикл заполнения массива опв
