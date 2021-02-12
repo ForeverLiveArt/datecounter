@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "gcloud app deploy",
-    "start": "node index.js",
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,10 +29,6 @@
   "dependencies": {
     "@google-cloud/storage": "^5.7.4",
     "express": "^4.17.1",
-    "express-openid-connect": "^2.2.1",
-    "express-session": "^1.17.1",
-    "luxon": "^1.25.0",
-    "passport-local": "^1.0.0",
-    "session-file-store": "^1.5.0"
+    "luxon": "^1.25.0"
   }
 }
