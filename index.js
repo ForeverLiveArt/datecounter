@@ -8,22 +8,28 @@ app.use(express.json({ limit: '1mb' }));
 var { DateTime } = require('luxon');
 DateTime.local();
 
-const { ttrule, make2Darray, regretsArray, regretsAge, sumDigits } = require('./app_tools.js');
-var startDate = 0;
+const { ttrule, regretsArray, regretsAge, sumDigits, langArray } = require('./app_tools.js');
+
 
 app.post('/api', (request, response) => {
 
     const dateString = request.body.dateString;
+    let nameString = request.body.nameString;
+    const langString = request.body.langString;
+    console.log(nameString, langString);
     const startDate = DateTime.fromFormat(dateString, 'yyyy-MM-dd');
+
     //______________________________________________________________________ARCANES CALC
     let dayArcane = ttrule(startDate.day);
     let monthArcane = ttrule(startDate.month);
     let yearArcane = ttrule(sumDigits(startDate.year));
+
     //______________________________________________________________________OPV 0 CALC
     let opv1 = [];
     let opv2 = [];
     let opv3 = [];
     opv1[0] = ttrule(dayArcane - monthArcane);
+
     //______________________________________________________________________CALC VALUES
     let ieb = ttrule(yearArcane - monthArcane);
     let kch = ttrule(yearArcane - dayArcane);
@@ -35,18 +41,45 @@ app.post('/api', (request, response) => {
     let prpj = dayArcane + (4 * monthArcane) + yearArcane;
     let dtp = dayArcane + (3 * monthArcane) + yearArcane;
     let zka = dayArcane + (2 * monthArcane) + yearArcane;
-
+    let esz = dayArcane + monthArcane + yearArcane;
     let tpe = dayArcane + monthArcane;
     let zes = dayArcane + yearArcane;
     let tpd = tpe + monthArcane;
     let kas = opv1[0] - ieb;
-    let esz = dayArcane + monthArcane + yearArcane;
     let ptp = esz - monthArcane;
     let els = esz - opv1[0];
-    //let per = nameArcane + (9 * monthArcane) + yearArcane;
-    //let tie = esz + zka + nameArcane;   
-    //let zeo = esz + per
-    //let zez = esz - per
+
+    //______________________________________________________________________CALCULATE NAME
+    let nameArcane = 0;
+    nameString = nameString.split("");
+    outer: for (let q = 0; q < nameString.length; q++) {
+        for (let s = 0, nines = 1; s < langArray[langString].length; s++, nines++) {
+            if ( nines == 10 ) { nines = 1; }
+            if ( nameString[q].toLowerCase() === 'd' ) {
+                if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === langArray[langString][s] ) {
+                    nameArcane += nines;
+                    console.log(nameString[q].concat(nameString[q + 1]));
+                    q++;       
+                    continue outer;                                 
+                } 
+            } else if ( nameString[q].toLowerCase() === 'c' ) {
+                if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === langArray[langString][s] ) {
+                    nameArcane += nines;
+                    q++;       
+                    continue outer;             
+                } 
+            } else if ( nameString[q].toLowerCase() === langArray[langString][s] ) {
+                nameArcane += nines;   
+                console.log("errorz");
+            }
+        }
+    }
+
+    let per = nameArcane + (9 * monthArcane) + yearArcane;
+    let tie = esz + zka + nameArcane;   
+    let zeo = esz + per;
+    let zez = esz - per;
+
     //______________________________________________________________________OPV 123 ARRAYS
     let dateCounter = [];
     dateCounter[0] = startDate;
@@ -66,22 +99,18 @@ app.post('/api', (request, response) => {
     }
 
     //______________________________________________________________________REGRETS        
-
     let regrets = [];
     regrets[0] = ttrule(regretsArray[ttrule(parseInt(startDate.month)) - 1][ttrule(parseInt(startDate.day)) - 1] + opv1[0]);
     for (let k = 0, j = 0; j < regretsAge.length; k++, j = j + 2) {
         regrets[k + 1] = ttrule(regrets[k] + 1);
     }
-    //______________________________________________________________________
+
     //______________________________________________________________________SEND RESPONSE
     response.json({
-        dateCounter: dateCounter,
-        opv1: opv1,
-        opv2: opv2,
-        opv3: opv3,
-        regrets: regrets,
-        diffInTime: diffInTime,
-        regretsAge: regretsAge
+        dateCounter: dateCounter, diffInTime: diffInTime, opv1: opv1, opv2: opv2, opv3: opv3,
+        regrets: regrets, regretsAge: regretsAge, nameArcane: nameArcane, kch: kch, kch2: kch2, ieb: ieb, 
+        oge: oge, els: els, tpe: tpe, htp: htp, dtp: dtp, ptp: ptp, tpd: tpd, kas: kas, zka: zka, zde: zde, 
+        zes: zes, esz: esz, per: per, tii: tii, tie: tie, prpj: prpj, zeo: zeo, zez: zez
     });
 });
 
