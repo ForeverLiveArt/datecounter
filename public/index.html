@@ -8,6 +8,10 @@
 		
 		<meta name="title" content="Numerology">
 		<meta name="description" content="Calculate your date and name to learn about your number right now.">
+
+		<link rel="icon" href="img/favicon.png" type="image/x-icon"/>
+		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://coxo.digital/">
@@ -32,9 +36,22 @@
 		
 	</head>
 
-	<body onload="checkDate()">
+	<body onload="checkDate(); navbarlogin()">
+
+		<nav onload="navbarlogin()" class="navbar navbar-light" style="background-color: #A39226 ;">
+			<div class="container-fluid justify-content-between">
+				<a class="navbar-brand" href="#">
+					
+					<b>COXO Нумерология</b>
+				</a>
+				<div id='logins'></div>
+				
+
+			</div>
+		</nav>
 
 		<div class="container-sm" style="padding-top: 2.22rem; max-width: 40rem">
+			
 
 			<div class="input-group mb-3">
   				<span class="input-group-text" id="basic-addon1">
@@ -151,7 +168,7 @@
 	  				<thead class="thead-light">
 	    				<tr>
 	    					<th scope="col" >Дата</th>
-	      					<th scope="col" >Возраст л, м</th>
+	      					<th scope="col" >Возраст л, м*</th>
 	      					<th scope="col" >СЖ</th>
 	    				</tr>
 	  				</thead>
@@ -167,7 +184,7 @@
 
 				<table class="table table-bordered table-hover table-sm table-responsive" 
 						id="table3">
-					<caption>*л, м – лет, месяцев</caption>
+					
 	  				<thead class="thead-light">
 	    				<tr>
 	    					<th scope="col" >Переменная</th>

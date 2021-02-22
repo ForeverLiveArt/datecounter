@@ -13,13 +13,6 @@ div.alert:nth-child(1) {
     background-color: #fff !important;
 }
 
-thead {
-    position: sticky;
-    top: 0;
-
-}
-
-
 .container-sm {
     padding-bottom: 20px;
 }
@@ -38,26 +31,27 @@ thead {
     margin-right: .5rem;
 }
    
-
-
-
 .nav {
     margin-left: 1px;
-  }
+}
   
-
-
 .nav-tabs .nav-link {
     margin-bottom: -1px !important;
 }
 
-
 .table-dark {
     --bs-table-bg: #43a047 !important;
 }
+
 .thead-light {
     background-color: #eaeaea !important;
     color: #515151;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+
 }
   
 

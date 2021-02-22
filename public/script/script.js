@@ -5,6 +5,36 @@ let Durimp = luxon.Duration.fromISO;
 let startDate = 0;
 
 
+async function navbarlogin() {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ empy: 'empty' })
+    };
+    const response = await fetch('/logged', options);
+    const answer = await response.json();
+    console.log(answer);
+
+    if (answer.isLogged === 'true') {
+        
+        $("#logins").empty();
+        $("#logins").append(
+            
+            '<h6>Здравствуйте, </h6>' +
+            '<a class="btn btn-outline-dark" href="/logout" role="button">Выйти</a>'
+        );
+    } else {
+        
+        $("#logins").empty();
+        $("#logins").append(
+            '<h6></h6>' +
+            '<a class="btn btn-outline-dark" href="/login" role="button">Авторизация</a>'
+        );
+    }
+}
+
 //______________________________________________________________________AUTO TAB FIELDS
 
 function leadingZeros(input) {
@@ -186,13 +216,14 @@ async function calculateOPV(dateString, nameString, langString) {
     }
 }
 
-/*function savePDF() {
+function savePDF() {
     var doc = new jsPDF();
 
     doc.autoTable({ html: '#table1' });
     doc.autoTable({ html: '#table2' });
+    doc.autoTable({ html: '#table3' });
     doc.save(startDate.toFormat('dd.MM.yyyy') + '.pdf');
-}*/
+}
 
 
 
