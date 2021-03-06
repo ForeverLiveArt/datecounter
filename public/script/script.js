@@ -17,16 +17,16 @@ async function navbarlogin() {
     const answer = await response.json();
     console.log(answer);
 
-    if (answer.isLogged === 'true') {
-        
+    if (answer.isLogged == 'true') {
+        console.log(answer.isLogged);
         $("#logins").empty();
         $("#logins").append(
             
-            '<h6>Здравствуйте, </h6>' +
+            '<h6>Здравствуйте, ' + answer.user.name + '</h6>' +
             '<a class="btn btn-outline-dark" href="/logout" role="button">Выйти</a>'
         );
     } else {
-        
+        console.log(answer.isLogged);
         $("#logins").empty();
         $("#logins").append(
             '<h6></h6>' +

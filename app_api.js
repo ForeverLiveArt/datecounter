@@ -52,40 +52,45 @@ function main_counter(request) {
     //______________________________________________________________________CALCULATE NAME
     let nameArcane = 0;
     nameString = nameString.split("");
-    outer: for (let q = 0; q < nameString.length; q++) {
-        for (let s = 0, nines = 1; s < langArray[langString].length; s++, nines++) {
-            if (nines > 9) { nines = nines - 9; }
-            if (langString == 2 && q + 1 != nameString.length) {
-                if (nameString[q].toLowerCase() === 'd') {
-                    if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dz') {
-                        nameArcane += 9;
-                        q++;
-                        continue outer;
-                    } else if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dž') {
-                        nameArcane += 1;
-                        q++;
-                        continue outer;
-                    } else {
-                        nameArcane += 7;
-                    }
-                } else if (nameString[q].toLowerCase() === 'c') {
-                    if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'ch') {
-                        nameArcane += 7;
-                        q++;
-                        continue outer;
-                    } else {
-                        nameArcane += 5;
+    if ( nameString.length != 0 ) {
+        outer: for (let q = 0; q < nameString.length; q++) {
+            for (let s = 0, nines = 1; s < langArray[langString].length; s++, nines++) {
+                if (nines > 9) { nines = nines - 9; }
+                if (langString == 2 && q + 1 != nameString.length) {
+                    if (nameString[q].toLowerCase() === 'd') {
+                        if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dz') {
+                            nameArcane += 9;
+                            q++;
+                            continue outer;
+                        } else if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dž') {
+                            nameArcane += 1;
+                            q++;
+                            continue outer;
+                        } else {
+                            nameArcane += 7;
+                        }
+                    } else if (nameString[q].toLowerCase() === 'c') {
+                        if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'ch') {
+                            nameArcane += 7;
+                            q++;
+                            continue outer;
+                        } else {
+                            nameArcane += 5;
+                        }
+                    } else if (nameString[q].toLowerCase() === langArray[langString][s]) {
+                        nameArcane += nines;
                     }
                 } else if (nameString[q].toLowerCase() === langArray[langString][s]) {
                     nameArcane += nines;
                 }
-            } else if (nameString[q].toLowerCase() === langArray[langString][s]) {
-                nameArcane += nines;
             }
         }
+        nameArcane = ttrule(nameArcane);
+    } else {
+        nameArcane = 0;
     }
 
-    nameArcane = ttrule(nameArcane);
+    
 
     let per = ttrule(nameArcane + (9 * monthArcane) + yearArcane);
     let tie = ttrule(esz + zka + nameArcane);   
