@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { promisify } = require('util');
 require('dotenv').config();
 const { auth, requiresAuth } = require('express-openid-connect');
 const { main_counter, kids_counter, auth_conf } = require('./app_api.js');
@@ -14,6 +13,7 @@ app.use(express.json({ limit: '1mb' }));
 app.use(auth(auth_conf));
 app.use(cors());
 
+/*
 async function accesssheet() {
     const doc = new GoogleSpreadsheet('1WhVKkrvFJH2lZnqiUbEX9_EzAl-hPHHBpubG8o04IHI');
     await doc.useServiceAccountAuth({
@@ -27,6 +27,7 @@ async function accesssheet() {
 }
 
 accesssheet();
+*/
 
 app.post('/logged', (request, response) => {  
     if ( request.oidc.isAuthenticated() ) { 
