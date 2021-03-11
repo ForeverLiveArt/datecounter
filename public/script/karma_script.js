@@ -5,35 +5,6 @@ let Durimp = luxon.Duration.fromISO;
 let startDate = 0;
 
 
-async function navbarlogin() {
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ empy: 'empty' })
-    };
-    const response = await fetch('/logged', options);
-    const answer = await response.json();
-    console.log(answer);
-
-    if (answer.isLogged == 'true') {
-        console.log(answer.isLogged);
-        $("#logins").empty();
-        $("#logins").append(
-            
-            '<h6>Здравствуйте, ' + answer.user.name + '</h6>' +
-            '<a class="btn btn-outline-dark" href="/logout" role="button">Выйти</a>'
-        );
-    } else {
-        console.log(answer.isLogged);
-        $("#logins").empty();
-        $("#logins").append(
-            '<h6></h6>' +
-            '<a class="btn btn-outline-dark" href="/login" role="button">Авторизация</a>'
-        );
-    }
-}
 
 //______________________________________________________________________AUTO TAB FIELDS
 
@@ -70,6 +41,9 @@ async function calculateOPV(dateString, nameString, langString) {
     //var now = luxon.DateTime.local(); 
     if (startDate.isValid) { //проверка даты на валидность
 
+        $('#myTabContent').css('display', 'none');
+        $('#spinners').css('display', 'initial');
+
         //______________________________________________________________________SERVER REQUEST
         const options = {
             method: 'POST',
@@ -86,8 +60,7 @@ async function calculateOPV(dateString, nameString, langString) {
         let intervals = 22; //количество сотен в цикле
         let cycle = 1;
 
-        $('#myTabContent').css('display', 'none');
-        $('#spinners').css('display', 'initial');
+        
 
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
 

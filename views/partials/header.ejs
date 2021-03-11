@@ -1,0 +1,169 @@
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
+    <a class="navbar-brand mr-lg-5" href="/">
+        <img class="navbar-brand-dark" src="img/favicon.png" alt="Volt logo" />
+    </a>
+    <div class="d-flex align-items-center">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container-fluid bg-soft">
+    
+
+            <nav id="sidebarMenu" class="sidebar d-md-block bg-primary text-white collapse" data-simplebar>
+                <div class="sidebar-inner px-4 pt-3">
+                    <div
+                        class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+
+                        <div class="d-flex align-items-center">
+
+                            <div class="d-block" id='logins_mobile'>
+                                <h2 class="h6">Авторизуйтесь чтобы начать рассчет</h2>
+                                <a href="/login" class="btn btn-secondary text-dark btn-xs">
+                                    <span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>
+                                    Войти
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="collapse-close d-md-none">
+                            <a href="#sidebarMenu" class="fas fa-times" data-bs-toggle="collapse"
+                                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
+                                aria-label="Toggle navigation"></a>
+                        </div>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">
+                                <span class="sidebar-icon"><span class="fas fa-home"></span></span>
+                                <span>Главная</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/karma" class="nav-link">
+                                <span class="sidebar-icon"><span class="fas fa-dharmachakra"></span></span>
+                                <span>Рассчет кармы</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/kids" class="nav-link">
+                                <span class="sidebar-icon"><span class="fas fa-baby"></span></span>
+                                <span>Воспитание ребёнка</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="/health" class="nav-link">
+                                <span class="sidebar-icon"><span class="fas fa-heartbeat"></span></span>
+                                <span>График здоровья</span>
+                            </a>
+                        </li>
+
+
+
+                        <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
+
+                        <li class="nav-item">
+                            <a href="/about" target="_blank" class="nav-link d-flex align-items-center">
+                                <span class="sidebar-icon"><span class="far fa-question-circle"></span></span>
+                                <span>Поддержка</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/refill" target="_blank" class="nav-link d-flex align-items-center">
+                                <span class="sidebar-icon"><span class="fas fa-book"></span></span>
+                                <span>Пополнение счёта</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="content">
+                <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark pl-0 pr-2 pb-0">
+                    <div class="container-fluid px-0">
+                        <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
+
+                            <!-- Navbar links -->
+                            <ul class="navbar-nav align-items-center" id='logins'>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+<script>
+    async function navbarlogin() {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                empty: 'empty'
+            })
+        };
+        const response = await fetch('/logged', options);
+        const answer = await response.json();
+        console.log(answer);
+
+        if (answer.isLogged == 'true') {
+            console.log(answer.isLogged);
+            $("#logins_mobile").empty();
+            $("#logins_mobile").append(
+                '<div class="user-avatar lg-avatar mr-4">' +
+                '<img src="' + answer.user.picture + '"' +
+                'class="card-img-top rounded-circle border-white" alt="' + answer.user.name + '">' +
+                '</div>' +
+                '<h2 class="h6">Здравствуйте, ' + answer.user.name + '</h2>' +
+                '<a href="/logout"' +
+                'class="btn btn-secondary text-dark btn-xs">' +
+                '<span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>' +
+                'Выйти' +
+                '</a>'
+            );
+            $("#logins").empty();
+            $("#logins").append(`           
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <div class="media d-flex align-items-center" >
+                                            <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
+                                                src="` + answer.user.picture + `">
+                                            <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
+                                                <span class="mb-0 font-small font-weight-bold">` + answer.user.name + `</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
+                                        <a class="dropdown-item font-weight-bold" href="/profile"><span
+                                                class="far fa-user-circle"></span>Мой профиль</a>
+                                        <a class="dropdown-item font-weight-bold" href="/support"><span
+                                                class="fas fa-user-shield"></span>Поддержка</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item font-weight-bold" href="/logout"><span
+                                                class="fas fa-sign-out-alt text-danger"></span>Выйти</a>
+                                    </div>
+                                </li>
+                                `);
+        } else {
+            console.log(answer.isLogged);
+            $("#logins_mobile, #logins").empty();
+            $("#logins_mobile, #logins").append(
+                '<div>' +
+                '<h2 class="h6">Авторизуйтесь, чтобы начать рассчет</h2>' +
+                '<a href="/login"' +
+                'class="btn btn-secondary text-dark btn-xs">' +
+                '<span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>' +
+                'Войти' +
+                '</a></div>'
+            );
+        }
+    }
+    window.onload = navbarlogin();
+</script>

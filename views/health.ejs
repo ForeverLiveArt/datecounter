@@ -1,56 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru-ru">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<!-- Primary Meta Tags -->
-		<title>Cчетчик нумеролога</title>
-		
-		<meta name="title" content="Numerology">
-		<meta name="description" content="Calculate your date and name to learn about your number right now.">
+<%- include('partials/head'); %>
 
-		<link rel="icon" href="img/favicon.png" type="image/x-icon"/>
-		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
+	<body onload="checkDate()">
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://coxo.digital/">
-		<meta property="og:title" content="Numerology">
-		<meta property="og:description" content="Calculate your date and name to learn about your number right now.">
-		<meta property="og:image" content="img/image.jpg">
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content="https://coxo.digital/">
-		<meta property="twitter:title" content="Numerology">
-		<meta property="twitter:description" content="Calculate your date and name to learn about your number right now.">
-		<meta property="twitter:image" content="img/image.jpg">
+		<%- include('partials/header', {title:'Нумерология здоровья'}); %>
 
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    	<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
-			  				   integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
-							   crossorigin="anonymous">
-
-		
-	</head>
-
-	<body onload="checkDate(); navbarlogin()">
-
-		<nav onload="navbarlogin()" class="navbar navbar-light" style="background-color: #A39226 ;">
-			<div class="container-fluid justify-content-between">
-				<a class="navbar-brand" href="#">
-					
-					<b>COXO Нумерология</b>
-				</a>
-				<div id='logins'></div>
-				
-
-			</div>
-		</nav>
-
-		<div class="container-sm" style="padding-top: 2.22rem; max-width: 40rem">
+		<div class="container-sm card border-light shadow-sm" style="padding-top: 2.22rem; max-width: 40rem">
 			
 
 			<div class="input-group mb-3">
@@ -203,19 +157,8 @@
 	</div>
 
 
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
-				integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" 
-				crossorigin="anonymous"></script>	
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/1.25.0/luxon.js" 
-				integrity="sha512-GH132x5SDy3XT+8wcxzCvATbUV5BNF0l6ucLVbj5TY8qHDEAdh9WLcd+dCEEuyXFaD16A/5+OjuE+tkTkiBk6A==" 
-				crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-		<script src="https://unpkg.com/jspdf-autotable@3.5.13/dist/jspdf.plugin.autotable.js"></script>
-		<script src="script/readMoreJS.min.js"></script>
-		<script src="script/text.js"></script>
-		<script src="script/script.js"></script>
-
+	<%- include('partials/footer'); %>
+	<script src="script/health_script.js"></script>
 
 	</body>
 
