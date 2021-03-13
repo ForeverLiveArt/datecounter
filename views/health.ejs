@@ -35,6 +35,25 @@
 
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">
+					Время
+				</span>
+				<input type="number" id="dateInputHour" class="form-control" 
+						placeholder="ЧЧ" aria-label="Часов" 
+						aria-describedby="basic-addon1" 
+						min="00" max="24" step="1" maxlength="2" 
+						onkeyup="moveOnMax(this, 'dateInputMinute')"
+						onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+
+				<input type="number" id="dateInputMinute" class="form-control" 
+						placeholder="ММ" aria-label="Минут" 
+						aria-describedby="basic-addon1"
+						min="00" max="59" step="1" maxlength="2" 
+						onkeyup="moveOnMax(this, 'dateInputMinute')"
+						onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+			</div>
+
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="basic-addon1">
 					Имя
 				</span>
 				<input type="text" id="nameString" class="form-control" 

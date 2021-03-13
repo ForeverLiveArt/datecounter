@@ -1,7 +1,17 @@
-const { DateTime } = require('luxon');
+const {
+    DateTime
+} = require('luxon');
 DateTime.local();
 
-const { ttrule, regretsArray, regretsAge, sumDigits, langArray } = require('./app_tools.js');
+const {
+    ttrule,
+    regretsArray,
+    make2Darray,
+    regretsAge,
+    sumDigits,
+    modulo9,
+    langArray
+} = require('./app_tools.js');
 
 const auth_conf = ({
     authRequired: false,
@@ -19,25 +29,25 @@ function main_counter(request) {
     const langString = request.body.langString;
 
     const startDate = DateTime.fromFormat(dateString, 'yyyy-MM-dd');
-    //______________________________________________________________________ARCANES CALCy
+    // ARCANES CALC
     let dayArcane = ttrule(startDate.day);
     let monthArcane = ttrule(startDate.month);
     let yearArcane = ttrule(sumDigits(startDate.year));
 
-    //______________________________________________________________________OPV 0 CALC
+    // OPV 0 CALC
     let opv1 = [];
     let opv2 = [];
     let opv3 = [];
     opv1[0] = ttrule(dayArcane - monthArcane);
 
-    //______________________________________________________________________CALC VALUES
+    // CALC VALUES
     let ieb = ttrule(yearArcane - monthArcane);
     let kch = ttrule(yearArcane - dayArcane);
     let htp = ttrule(dayArcane + (9 * monthArcane) + yearArcane);
-    let kch2 = ttrule(dayArcane + (8 * monthArcane) + yearArcane);	
+    let kch2 = ttrule(dayArcane + (8 * monthArcane) + yearArcane);
     let oge = ttrule(dayArcane + (7 * monthArcane) + yearArcane);
-    let tii = ttrule((6 * dayArcane) + (6 * monthArcane) + (5 * yearArcane));  
-    let zde = ttrule(dayArcane + (5 * monthArcane) + yearArcane); 
+    let tii = ttrule((6 * dayArcane) + (6 * monthArcane) + (5 * yearArcane));
+    let zde = ttrule(dayArcane + (5 * monthArcane) + yearArcane);
     let prpj = ttrule(dayArcane + (4 * monthArcane) + yearArcane);
     let dtp = ttrule(dayArcane + (3 * monthArcane) + yearArcane);
     let zka = ttrule(dayArcane + (2 * monthArcane) + yearArcane);
@@ -49,13 +59,15 @@ function main_counter(request) {
     let ptp = ttrule(esz - monthArcane);
     let els = ttrule(esz - opv1[0]);
 
-    //______________________________________________________________________CALCULATE NAME
+    // CALCULATE NAME
     let nameArcane = 0;
     nameString = nameString.split("");
-    if ( nameString.length != 0 ) {
+    if (nameString.length != 0) {
         outer: for (let q = 0; q < nameString.length; q++) {
             for (let s = 0, nines = 1; s < langArray[langString].length; s++, nines++) {
-                if (nines > 9) { nines = nines - 9; }
+                if (nines > 9) {
+                    nines = nines - 9;
+                }
                 if (langString == 2 && q + 1 != nameString.length) {
                     if (nameString[q].toLowerCase() === 'd') {
                         if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dz') {
@@ -86,106 +98,119 @@ function main_counter(request) {
             }
         }
         nameArcane = ttrule(nameArcane);
-    } else {
+    }
+    else {
         nameArcane = 0;
     }
 
-    
-
     let per = ttrule(nameArcane + (9 * monthArcane) + yearArcane);
-    let tie = ttrule(esz + zka + nameArcane);   
+    let tie = ttrule(esz + zka + nameArcane);
     let zeo = ttrule(esz + per);
     let zez = ttrule(esz - per);
 
-    //______________________________________________________________________OPV 123 ARRAYS
+    // OPV 123 ARRAYS
     let dateCounter = [];
     dateCounter[0] = startDate;
-    let intervals = 22; //количество 22 в цикле
+    let intervals = 22; // количество 22 в цикле
     let cycle = 1;
     let diffInTime = [];
     let i = 0;
-    while (i != 220) { //Цикл заполнения массива опв
-        dateCounter[i + 1] = dateCounter[i].plus({ days: 100 });
+    while (i != 220) { // Цикл заполнения массива опв
+        dateCounter[i + 1] = dateCounter[i].plus({
+            days: 100
+        });
         opv1[i + 1] = ttrule(opv1[i] - 1);
         opv2[i] = ttrule(opv1[i] - kch);
         opv3[i] = ttrule(opv1[i] + opv2[i] + kch + ieb);
-        //считает возраст в годах и месяцах
+        // считает возраст в годах и месяцах
         diffInTime[i] = dateCounter[i + 1].diff(dateCounter[0], ['years', 'months', 'days']);
         diffInTime[i].toObject();
         i = i + 1;
     }
 
-    //______________________________________________________________________REGRETS        
+    // REGRETS        
     let regrets = [];
     regrets[0] = ttrule(regretsArray[ttrule(parseInt(startDate.month)) - 1][ttrule(parseInt(startDate.day)) - 1] + opv1[0]);
     for (let k = 0, j = 0; j < regretsAge.length; k++, j = j + 2) {
         regrets[k + 1] = ttrule(regrets[k] + 1);
     }
 
-    //______________________________________________________________________SEND RESPONSE
+    // SEND RESPONSE
     let response = ({
-        dateCounter: dateCounter, diffInTime: diffInTime, opv1: opv1, opv2: opv2, opv3: opv3,
-        regrets: regrets, regretsAge: regretsAge, nameArcane: nameArcane, kch: kch, kch2: kch2, 
-        ieb: ieb, oge: oge, els: els, tpe: tpe, htp: htp, dtp: dtp, ptp: ptp, tpd: tpd, kas: kas, 
-        zka: zka, zde: zde, zes: zes, esz: esz, per: per, tii: tii, tie: tie, prpj: prpj, zeo: zeo, zez: zez
+        dateCounter: dateCounter,
+        diffInTime: diffInTime,
+        opv1: opv1,
+        opv2: opv2,
+        opv3: opv3,
+        regrets: regrets,
+        regretsAge: regretsAge,
+        nameArcane: nameArcane,
+        kch: kch,
+        kch2: kch2,
+        ieb: ieb,
+        oge: oge,
+        els: els,
+        tpe: tpe,
+        htp: htp,
+        dtp: dtp,
+        ptp: ptp,
+        tpd: tpd,
+        kas: kas,
+        zka: zka,
+        zde: zde,
+        zes: zes,
+        esz: esz,
+        per: per,
+        tii: tii,
+        tie: tie,
+        prpj: prpj,
+        zeo: zeo,
+        zez: zez
     });
 
-    return(response);
+    return (response);
 }
 
 function kids_counter(request) {
+    
     const dateString = request.body.dateString;
     const startDate = DateTime.fromFormat(dateString, 'yyyy-MM-dd');
-    //______________________________________________________________________ARCANES CALC
+
+    // ARCANES CALC
+
     let dayArcane = ttrule(startDate.day);
     let monthArcane = ttrule(startDate.month);
     let yearArcane = ttrule(sumDigits(startDate.year));
-    //______________________________________________________________________OPV 0 CALC
+
+    // OPV 0 CALC
+
     let opv1 = [];
     opv1[0] = ttrule(dayArcane - monthArcane);
-    //______________________________________________________________________CALC VALUES
-    let ieb = ttrule(yearArcane - monthArcane);
-    let kch = ttrule(yearArcane - dayArcane);
-    let htp = dayArcane + (9 * monthArcane) + yearArcane;
-    let kch2 = dayArcane + (8 * monthArcane) + yearArcane;	
-    let oge = dayArcane + (7 * monthArcane) + yearArcane;
-    let tii = (6 * dayArcane) + (6 * monthArcane) + (5 * yearArcane);  
-    let zde = dayArcane + (5 * monthArcane) + yearArcane; 
-    let prpj = dayArcane + (4 * monthArcane) + yearArcane;
-    let dtp = dayArcane + (3 * monthArcane) + yearArcane;
-    let zka = dayArcane + (2 * monthArcane) + yearArcane;
 
-    let tpe = dayArcane + monthArcane;
-    let zes = dayArcane + yearArcane;
-    let tpd = tpe + monthArcane;
-    let kas = opv1[0] - ieb;
-    let esz = dayArcane + monthArcane + yearArcane;
-    let ptp = esz - monthArcane;
-    let els = esz - opv1[0];
-    //let per = nameArcane + (9 * monthArcane) + yearArcane;
-    //let tie = esz + zka + nameArcane;   
-    //let zeo = esz + per
-    //let zez = esz - per
-    //______________________________________________________________________OPV 123 ARRAYS
+    // OPV 123 ARRAYS
+
     let dateCounter = [];
     dateCounter[0] = startDate;
 
     let diffInTime = [];
     let i = 0;
-    while (i != 22) { //Цикл заполнения массива опв
-        dateCounter[i + 1] = dateCounter[i].plus({ days: 100 });
+    while (i != 22) { // Цикл заполнения массива опв
+        dateCounter[i + 1] = dateCounter[i].plus({
+            days: 100
+        });
         opv1[i + 1] = ttrule(opv1[i] - 1);
-        //считает возраст в годах и месяцах
+        // Cчитает возраст в годах и месяцах
         diffInTime[i] = dateCounter[i + 1].diff(dateCounter[0], ['years', 'months', 'days', 'minutes', 'seconds']);
         diffInTime[i].toObject();
         i = i + 1;
     }
-    //______________________________________________________________________REGRETS        
+
+    // REGRETS        
 
     let regrets = ttrule(regretsArray[ttrule(parseInt(startDate.month)) - 1][ttrule(parseInt(startDate.day)) - 1] + opv1[0]);
 
-    //______________________________________________________________________
-    //______________________________________________________________________SEND RESPONSE
+    // SEND RESPONSE
+
     let response = ({
         dateCounter: dateCounter,
         opv1: opv1,
@@ -193,130 +218,114 @@ function kids_counter(request) {
         diffInTime: diffInTime,
     });
 
-    return(response);
+    return (response);
 }
 
-function health_counter_1(request) {
+function health_counter(request) {
 
-    const dateString = request.body.dateString;
-    const timeString = request.body.timeString;
-    let nameString = request.body.nameString;
-    const langString = request.body.langString;
+    const dateString = request.body.dateString,
+          timeString = request.body.timeString,
+          langString = request.body.langString,
+          nameConst = request.body.nameString,
+          startDate = DateTime.fromFormat(dateString, 'yyyy-MM-dd'),
+          startTime = DateTime.fromFormat(timeString, 'HH-mm');
 
-    const startDate = DateTime.fromFormat(dateString, 'yyyy-MM-dd');
-    const startTime = DateTime.fromFormat(timeString, 'HH-mm');
-    //______________________________________________________________________ARCANES CALCy
-    let dayArcane = ttrule(startDate.day);
-    let monthArcane = ttrule(startDate.month);
-    let yearArcane = ttrule(sumDigits(startDate.year));
+    // CALCULATE NAME
 
-    //______________________________________________________________________OPV 0 CALC
-    let opv1 = [];
-    let opv2 = [];
-    let opv3 = [];
-    opv1[0] = ttrule(dayArcane - monthArcane);
+    let nameString = nameConst.split("");
+    let graphRes = 0;
 
-    //______________________________________________________________________CALC VALUES
-    let ieb = ttrule(yearArcane - monthArcane);
-    let kch = ttrule(yearArcane - dayArcane);
-    let htp = ttrule(dayArcane + (9 * monthArcane) + yearArcane);
-    let kch2 = ttrule(dayArcane + (8 * monthArcane) + yearArcane);	
-    let oge = ttrule(dayArcane + (7 * monthArcane) + yearArcane);
-    let tii = ttrule((6 * dayArcane) + (6 * monthArcane) + (5 * yearArcane));  
-    let zde = ttrule(dayArcane + (5 * monthArcane) + yearArcane); 
-    let prpj = ttrule(dayArcane + (4 * monthArcane) + yearArcane);
-    let dtp = ttrule(dayArcane + (3 * monthArcane) + yearArcane);
-    let zka = ttrule(dayArcane + (2 * monthArcane) + yearArcane);
-    let esz = ttrule(dayArcane + monthArcane + yearArcane);
-    let tpe = ttrule(dayArcane + monthArcane);
-    let zes = ttrule(dayArcane + yearArcane);
-    let tpd = ttrule(tpe + monthArcane);
-    let kas = ttrule(opv1[0] - ieb);
-    let ptp = ttrule(esz - monthArcane);
-    let els = ttrule(esz - opv1[0]);
+    if (nameString.length != 0) {
 
-    //______________________________________________________________________CALCULATE NAME
-    let nameArcane = 0;
-    nameString = nameString.split("");
-    if ( nameString.length != 0 ) {
+        let nameResArr = [];
+
+        for (let z = 0; z < nameString.length; z++) { //remove all the vowels and unused symbols from name
+            if (langArray[3].includes(nameString[z].toLowerCase()) || !(langArray[langString].includes(nameString[z].toLowerCase()))) {
+                nameString.splice(z, 1);
+                z--;
+            }
+        }
+
+        if (nameString.length != 0) {
         outer: for (let q = 0; q < nameString.length; q++) {
             for (let s = 0, nines = 1; s < langArray[langString].length; s++, nines++) {
-                if (nines > 9) { nines = nines - 9; }
+                if (nines > 9) {
+                    nines = nines - 9;
+                }
                 if (langString == 2 && q + 1 != nameString.length) {
                     if (nameString[q].toLowerCase() === 'd') {
                         if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dz') {
-                            nameArcane += 9;
+                            nameResArr.push(9);
                             q++;
                             continue outer;
                         } else if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'dž') {
-                            nameArcane += 1;
+                            nameResArr.push(1);
                             q++;
                             continue outer;
-                        } else {
-                            nameArcane += 7;
-                        }
+                        } else { nameResArr.push(7); }
                     } else if (nameString[q].toLowerCase() === 'c') {
                         if (nameString[q].toLowerCase().concat(nameString[q + 1].toLowerCase()) === 'ch') {
-                            nameArcane += 7;
+                            nameResArr.push(7);
                             q++;
                             continue outer;
-                        } else {
-                            nameArcane += 5;
-                        }
+                        } else { nameResArr.push(5);}
                     } else if (nameString[q].toLowerCase() === langArray[langString][s]) {
-                        nameArcane += nines;
+                        nameResArr.push(nines);
                     }
                 } else if (nameString[q].toLowerCase() === langArray[langString][s]) {
-                    nameArcane += nines;
+                    nameResArr.push(nines);
                 }
             }
         }
-        nameArcane = ttrule(nameArcane);
+
+        let nameRes2dArr = make2Darray(Math.ceil(nameResArr.length/8 + 1), 8);
+
+        nameRes2dArr[0] = startDate.toFormat('ddMMyyyy').split("");      
+        
+        for (let j = 1; j < nameRes2dArr.length; j++) {
+            nameRes2dArr[j].splice(0, 8, ...nameResArr.splice(0, 8));
+        }
+        
+        graphRes = make2Darray(3, 8);
+        console.log("graphRes before:", graphRes);
+        for (let j = 0; j < 8; j++) {
+            for (let i = 0; i < nameRes2dArr.length; i++) {
+                if (graphRes[0][j] === undefined) {
+                    graphRes[0][j] = 0;
+                }
+                if (nameRes2dArr[i][j] === undefined) {
+                    nameRes2dArr[i][j] = 0;
+                }
+                graphRes[0][j] += parseInt(nameRes2dArr[i][j]);
+                
+            }   
+            graphRes[0][j] = modulo9(graphRes[0][j]);
+            graphRes[1][j] = modulo9(graphRes[0][j] + 1);
+            graphRes[2][j] = modulo9(graphRes[0][j] + 2); 
+        }
+        console.log("graph:", graphRes); 
+        
+        } else {
+            graphRes = false;
+        }
+
     } else {
-        nameArcane = 0;
+        graphRes = false;
     }
-
     
+    // SEND RESPONSE
 
-    let per = ttrule(nameArcane + (9 * monthArcane) + yearArcane);
-    let tie = ttrule(esz + zka + nameArcane);   
-    let zeo = ttrule(esz + per);
-    let zez = ttrule(esz - per);
-
-    //______________________________________________________________________OPV 123 ARRAYS
-    let dateCounter = [];
-    dateCounter[0] = startDate;
-    let intervals = 22; //количество 22 в цикле
-    let cycle = 1;
-    let diffInTime = [];
-    let i = 0;
-    while (i != 220) { //Цикл заполнения массива опв
-        dateCounter[i + 1] = dateCounter[i].plus({ days: 100 });
-        opv1[i + 1] = ttrule(opv1[i] - 1);
-        opv2[i] = ttrule(opv1[i] - kch);
-        opv3[i] = ttrule(opv1[i] + opv2[i] + kch + ieb);
-        //считает возраст в годах и месяцах
-        diffInTime[i] = dateCounter[i + 1].diff(dateCounter[0], ['years', 'months', 'days']);
-        diffInTime[i].toObject();
-        i = i + 1;
-    }
-
-    //______________________________________________________________________REGRETS        
-    let regrets = [];
-    regrets[0] = ttrule(regretsArray[ttrule(parseInt(startDate.month)) - 1][ttrule(parseInt(startDate.day)) - 1] + opv1[0]);
-    for (let k = 0, j = 0; j < regretsAge.length; k++, j = j + 2) {
-        regrets[k + 1] = ttrule(regrets[k] + 1);
-    }
-
-    //______________________________________________________________________SEND RESPONSE
     let response = ({
-        dateCounter: dateCounter, diffInTime: diffInTime, opv1: opv1, opv2: opv2, opv3: opv3,
-        regrets: regrets, regretsAge: regretsAge, nameArcane: nameArcane, kch: kch, kch2: kch2, 
-        ieb: ieb, oge: oge, els: els, tpe: tpe, htp: htp, dtp: dtp, ptp: ptp, tpd: tpd, kas: kas, 
-        zka: zka, zde: zde, zes: zes, esz: esz, per: per, tii: tii, tie: tie, prpj: prpj, zeo: zeo, zez: zez
+        graphRes: graphRes,
+        
     });
 
-    return(response);
+    return (response);
 }
 
-module.exports = { main_counter, kids_counter, health_counter_1, auth_conf };
+module.exports = {
+    main_counter,
+    kids_counter,
+    health_counter,
+    auth_conf
+};

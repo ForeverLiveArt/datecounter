@@ -5,7 +5,7 @@ const express = require('express'),
     cors = require('cors'),
     { GoogleSpreadsheet } = require('google-spreadsheet'),
     { auth, requiresAuth } = require('express-openid-connect'),
-    { main_counter, kids_counter, auth_conf } = require('./app_api.js');
+    { main_counter, health_counter, kids_counter, auth_conf } = require('./app_api.js');
 
 
 app.listen(process.env.PORT, () => console.log('App_started'));
@@ -52,14 +52,13 @@ app.post('/api', (request, response) => {
 });
 
 app.post('/kids_api', (request, response) => {
-    let answer = kids_counter(request);
-    response.json(answer);
+    response.json(kids_counter(request));
 }); 
 
 
 app.post('/health_api', (request, response) => {
     //if ( request.oidc.isAuthenticated() ) { 
-        response.json(main_counter(request));
+        response.json(health_counter(request));
     // } else {
     //    response.json({ isLogged: 'false' });
     // }
