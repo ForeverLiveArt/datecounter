@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express'),
     app = express(),
     cors = require('cors'),
+    admin = require('firebase-admin'),
     { GoogleSpreadsheet } = require('google-spreadsheet'),
     { auth, requiresAuth } = require('express-openid-connect'),
     { main_counter, health_counter, kids_counter, auth_conf } = require('./app_api.js');
