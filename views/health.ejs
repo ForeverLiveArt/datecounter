@@ -4,7 +4,7 @@
 
 		<%- include('partials/header', {title:'Нумерология здоровья'}); %>
 
-		<div class="container-sm card border-light shadow-sm" style="padding-top: 2.22rem; max-width: 40rem">
+		<div class="container-sm card border-light shadow-sm" id="health_main" style="padding-top: 2.22rem; max-width: 40rem">
 			
 
 			<div class="input-group mb-3">
@@ -29,7 +29,7 @@
   					   placeholder="ГГГГ" aria-label="Год" 
   					   aria-describedby="basic-addon1"
   					   min="1799" max="2021" step="1" maxlength="4" 
-  					   onkeyup="moveOnMax(this, 'dateInputYear')"
+  					   onkeyup="moveOnMax(this, 'dateInputHour')"
   					   onchange="checkDate()" pattern="[0-9]{4}">
 			</div>
 
@@ -48,7 +48,7 @@
 						placeholder="ММ" aria-label="Минут" 
 						aria-describedby="basic-addon1"
 						min="00" max="59" step="1" maxlength="2" 
-						onkeyup="moveOnMax(this, 'dateInputMinute')"
+						onkeyup="moveOnMax(this, 'nameString')"
 						onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
 			</div>
 
@@ -82,94 +82,13 @@
   			</div>
 		</div>	
 
-		<div class="input-group mb-3" id="tabulation" style="display: none;">
-
-  			<ul class="nav nav-tabs" id="myTab" role="tablist">
-  				<li class="nav-item" role="presentation">
-    					<a class="nav-link active" id="opv-tab" 
-    					data-bs-toggle="tab" href="#contentOPV" 
-    					role="tab" aria-controls="contentOPV" aria-selected="true">ОПВ</a>
-  				</li>
-  				<li class="nav-item" role="presentation">
-    					<a class="nav-link" id="regrets-tab" 
-    					data-bs-toggle="tab" href="#contentRegrets" 
-    					role="tab" aria-controls="contentRegrets" aria-selected="false">Цикл кармы</a>
- 				</li>
-				<li class="nav-item" role="presentation">
-						<a class="nav-link" id="profile-tab" 
-						data-bs-toggle="tab" href="#contentName" 
-						role="tab" aria-controls="contentName" aria-selected="false">Арканы</a>
-			 	</li>
-			</ul>
-
-		</div>
-
-		<div class="tab-content" id="myTabContent" style="display: none;">
+		<canvas id="myChart" style="display:none;"></canvas>
 
 
-			<div class="tab-pane fade show active" id="contentOPV" role="tabpanel" aria-labelledby="Рассчет ОПВ">
-
-				<table class="table table-striped table-bordered table-hover table-sm table-responsive" 
-						id="table1">
-					<caption>*л, м, д – лет, месяцев, дней</caption>
-	  				<thead class="thead-light">
-	    				<tr>
-	      					<th scope="col" >Дата</th>
-	      					<th scope="col" >Возраст л, м, д*</th>
-	      					<th scope="col" >ОПВ1</th>
-	      					<th scope="col" >ОПВ2</th>
-	      					<th scope="col" >ОПВ3</th>
-	    				</tr>
-	  				</thead>
-	  				<tbody>
-	  				</tbody>
-				</table>	
-				<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
-
-			</div>
+			
 
 
-			<div class="tab-pane fade" id="contentRegrets" role="tabpanel" aria-labelledby="Цикл обратки кармы">
-
-				<div class="container-fluid" id="regrets_container">
-					
-				</div>
-
-				<table class="table table-bordered table-hover table-sm table-responsive" 
-						id="table2">
-					<caption>*л, м – лет, месяцев</caption>
-	  				<thead class="thead-light">
-	    				<tr>
-	    					<th scope="col" >Дата</th>
-	      					<th scope="col" >Возраст л, м*</th>
-	      					<th scope="col" >СЖ</th>
-	    				</tr>
-	  				</thead>
-	  				<tbody>
-	  				</tbody>
-				</table>	
-				<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
-
-			</div>
-
-
-			<div class="tab-pane fade" id="contentName" role="tabpanel" aria-labelledby="Таблица арканов">
-
-				<table class="table table-bordered table-hover table-sm table-responsive" 
-						id="table3">
-					
-	  				<thead class="thead-light">
-	    				<tr>
-	    					<th scope="col" >Переменная</th>
-	      					<th scope="col" >Значение</th>
-	    				</tr>
-	  				</thead>
-	  				<tbody>
-	  				</tbody>
-				</table>	
-				<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
-
-			</div>
+			
 
 		</div>
 

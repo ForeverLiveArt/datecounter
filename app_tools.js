@@ -86,8 +86,14 @@ function sumDigits(n) {
 
 function modulo9(n) {
     return (n - 1) % 9 + 1;
-  }
+}
+//______________________________________________________________________
+
+function shift(arr, direction, n) {
+    let times = n > arr.length ? n % arr.length : n;
+    return arr.concat(arr.splice(0, (direction > 0 ? arr.length - times : times)));
+ }
 
 
-module.exports = { ttrule, make2Darray, regretsArray, regretsAge, sumDigits, langArray, modulo9 };
+module.exports = { ttrule, make2Darray, regretsArray, regretsAge, sumDigits, langArray, modulo9, shift };
 

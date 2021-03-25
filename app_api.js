@@ -10,6 +10,7 @@ const {
     regretsAge,
     sumDigits,
     modulo9,
+    shift,
     langArray
 } = require('./app_tools.js');
 
@@ -234,6 +235,7 @@ function health_counter(request) {
 
     let nameString = nameConst.split("");
     let graphRes = 0;
+    let multiplier = 0;
 
     if (nameString.length != 0) {
 
@@ -287,8 +289,8 @@ function health_counter(request) {
         }
         
         graphRes = make2Darray(3, 8);
-        console.log("graphRes before:", graphRes);
-        for (let j = 0; j < 8; j++) {
+        
+        for (let j = 0; j < 8; j++) { //make 3d result array
             for (let i = 0; i < nameRes2dArr.length; i++) {
                 if (graphRes[0][j] === undefined) {
                     graphRes[0][j] = 0;
@@ -303,7 +305,23 @@ function health_counter(request) {
             graphRes[1][j] = modulo9(graphRes[0][j] + 1);
             graphRes[2][j] = modulo9(graphRes[0][j] + 2); 
         }
+        console.log("graphRes before:", graphRes);
+
+        graphRes = graphRes.reduce(function(prev, curr) {
+            return prev.concat(curr);
+          });
+        console.log("graphRes after:", graphRes);
+
+        console.log(startTime.hour);    
+        if (startTime.hour != 0) { //shift array
+            graphRes = shift(graphRes, -1, 24 - parseInt(startTime.hour));
+            console.log('shifted!');
+        }
+
+        multiplier = Math.round(((graphRes.reduce(function(a, b) { return a + b; }, 0)) / 24) * 10) / 10;  //array summ / 24 rounded to one decimal
+         
         console.log("graph:", graphRes); 
+        console.log("multiplier:", multiplier);
         
         } else {
             graphRes = false;
@@ -317,7 +335,7 @@ function health_counter(request) {
 
     let response = ({
         graphRes: graphRes,
-        
+        multiplier: multiplier  
     });
 
     return (response);
