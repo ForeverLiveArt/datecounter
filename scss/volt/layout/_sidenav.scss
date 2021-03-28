@@ -21,7 +21,7 @@
 		&.active {
 			& > .nav-link {
 				color: $light;
-				background-color: #2e3650;
+				background-color: #574D0B;
 				@include border-radius($border-radius);
 			}
 		}
@@ -48,7 +48,7 @@
 
 		.sidebar-icon {
 			margin-right: .5rem;
-			color: $white;
+			color: #F0DA4F;
 			span{
 				min-width: 22px;
 			}
@@ -85,7 +85,7 @@
 }
 
 .user-card{
-	border-bottom: 0.0625rem solid #2e3650;
+	border-bottom: 0.0625rem solid #ffffff70;
 }
 
 @include media-breakpoint-down(sm) {

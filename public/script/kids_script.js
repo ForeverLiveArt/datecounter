@@ -25,9 +25,16 @@ function moveOnMax(field, nextFieldID) {
 function checkDate() { //валидация ввода
     if (($('#dateInputYear').val().length > 1) && ($('#dateInputMonth').val().length > 1) && ($('#dateInputDay').val().length > 1)) {
         datestring = $('#dateInputYear').val() + '-' + $('#dateInputMonth').val() + '-' + $('#dateInputDay').val();
-
-        $('#lertx').remove(); //очистить ошибки если их нет
+        
         calculateOPV(datestring);
+    } else {
+        $('#birth_date_form').removeClass( 'is-valid' ).addClass( 'is-invalid' );
+        $('#birth_date_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
+        $('#alerts').prepend( //текст ошибки даты
+            '<div id="lertx" class="alert alert-light alert-dismissible fade show" role="alert">' +
+            'Дата введена некорректно.' +
+            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+            '</div>');
     }
 }
 
@@ -56,14 +63,20 @@ async function calculateOPV(dateString) {
         let intervals = 22; //количество сотен в цикле
         let cycle = 1;
 
+        $('#birth_date_form').removeClass( 'is-invalid' ).addClass( 'is-valid' );
+        $('#birth_date_form_button').removeClass( 'btn-primary' ).removeClass( 'btn-danger' ).addClass( 'btn-success' );
+        $('#lertx').remove(); //очистить ошибки если их нет
+
+
         $('#myTabContent').css('display', 'none');
+        $('#kids_result_container').css('display', 'flex');
         $('#spinners').css('display', 'initial');
 
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
         $("#learnage_container").empty();
 
         $("#learnage_container").append(
-            '<h4>Возраст начала обучения: '+ answer.opv1[0]*0.27 + '</h4>'
+            '<h5>В '+ answer.opv1[0]*0.27 + ' ваш ребёнок готов к началу обучения</h5>'
         );
 
         $('#table1').find('tbody').append( //пишет первую дату и столбец
@@ -78,15 +91,15 @@ async function calculateOPV(dateString) {
                             Durimp(answer.diffInTime[i]).days.toFixed(0) + '</td>' +
                     '<td>' + answer.opv1[i] + '</td>' +
             '</tr>' +
-            '<tr>' +
+            '<tr class="tr_unhoverable">' +
                 '<td colspan="3" class="collapse show multi-collapse mt-3" data-bs-parent="#table1" id="accord0">' +
-                    '<div class="fs-6 p-3" style="background-color:white!important;">' +
+                    '<div class="fs-6 p-0">' +
                         '<h3>Знак ' + answer.opv1[i] + '</h3>' +
                         '<article class="readmore">' +
                         kidsTextArray[0][answer.opv1[i]] +
                     '</article><a href="#tr_slide' + i + '" role="button" data-bs-toggle="collapse"' +
                     'data-bs-target="#accord1"' +
-                    'aria-controls="#accord1" type="button" class="btn btn-outline-primary scroller">Следующий знак →</a></div>' +
+                    'aria-controls="#accord1" type="button" class="btn btn-outline-secondary mb-3">Следующий период →</a></div>' +
                 '</td>' +
             '</tr>'            
         );
@@ -106,9 +119,9 @@ async function calculateOPV(dateString) {
                          Durimp(answer.diffInTime[i]).days.toFixed(0) + '</td>' +
                 '<td>' + answer.opv1[i] + '</td>' +
             '</tr>' +
-            '<tr>' +
+            '<tr class="tr_unhoverable">' +
                 '<td colspan="3" class="collapse multi-collapse mt-3" data-bs-parent="#table1" id="accord' + i + '">' +
-                    '<div class="fs-6 p-3" style="background-color:white!important;">' +
+                    '<div class="fs-6 p-0" style="background-color:white!important;">' +
                     '<h3>Знак ' + answer.opv1[i] + '</h3>' +
                     '<article class="readmore">' +
                         kidsTextArray[answer.opv1[i]] +
@@ -116,11 +129,11 @@ async function calculateOPV(dateString) {
                     (i != 21 ?  //последняя кнопка ведет на первый знак
                         '<a href="#tr_slide' + i + '" role="button" data-bs-toggle="collapse"' +
                         'data-bs-target="#accord' + (i + 1) + '"' +
-                        'aria-controls="#accord' + (i + 1) + '" type="button" class="btn btn-outline-primary scroller">Следующий знак →</a></div>'
+                        'aria-controls="#accord' + (i + 1) + '" type="button" class="btn btn-outline-secondary scroller mb-3">Следующий период →</a></div>'
                         : 
                         '<a href="#table1" role="button" data-bs-toggle="collapse"' +
                         'data-bs-target="#accord0"' +
-                        'aria-controls="#accord0" type="button" class="btn btn-outline-primary scroller">Первый знак →</a></div>') +
+                        'aria-controls="#accord0" type="button" class="btn btn-outline-secondary scroller mb-3">Первый период →</a></div>') +
                 '</td>' +
             '</tr>'
             );
@@ -141,13 +154,13 @@ async function calculateOPV(dateString) {
 
         $readMoreJS.init({
               target: '.readmore', 
-              numOfWords: 45,     
+              numOfWords: 49,     
               // If true, user can toggle between 'read more' and 'read less'. 
               toggle: true,              
-              moreLink: 'Читать далее ↓', 
+              moreLink: 'Читать полностью ↓', 
               lessLink: 'Cвернуть ↑',      
               // The class given to the read more link. 
-              linkClass: 'btn btn-outline-primary',    
+              linkClass: 'btn btn-outline-secondary mr-3 mb-3',    
               // The class given to the div container of the read more link.
               containerClass: 'readmorecls'
         });    
@@ -164,6 +177,7 @@ async function calculateOPV(dateString) {
 
     } else {
         $('#spinners').css('display', 'none');
+        $('#birth_date_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
         $('#alerts').prepend( //текст ошибки даты
             '<div id="lertx" class="alert alert-light alert-dismissible fade show" role="alert">' +
             'Дата введена некорректно.' +

@@ -3,115 +3,138 @@
 <body onload="checkDate()">
 
 	<%- include('partials/header', {title:'Детская нумерология'}); %>
-	<div class="container-sm card border-light shadow-sm">
-		<div class="row">
-			<div class="col" id=description_title>
-				<h3>Детская нумерология <br> Воспитание кармой</h3>
-				<article><b>Карма</b> – это программа, созданная воспитывать человека. Ее задача – помочь нашей душе
-					качественно, гармонично развиваться и эволюционировать.
-					Она не имеет цели навредить человеку, совсем наоборот – карма дает нам уроки, пройдя
-					которые мы переходим на новый уровень.<br><br>
-					В пространстве нашей Матрицы существует всего 22 вида уроков. Период первого урока – 100 дней.
-					Именно в эти 100 дней формируется моральный облик ребенка на всю жизнь. Все эти уроки
-					каждый человек проходит в первые 6 лет жизни. И задача родителей помочь ребенку достойно
-					освоить эти уроки.<br><br>
-					Ребенок не случайно попадает в ту или иную среду. Еще до зачатия душа сама выбирает себе
-					родителей, способных создать наилучшие условия для прохождения испытаний. И на практике мы
-					часто видим, как в неблагополучных семьях вырастают гении. А бывает и наоборот, когда
-					ребенок, воспитываясь в очень обеспеченной семье способен на воровство. Это все потому, что
-					есть всего 100 дней в целой жизни, которые закладывают в ребенке отношение к той или иной
-					области. Именно эти определенные 100 дней могут сделать человека честным и щедрым или
-					жадным и подлым. В остальные периоды ребенок проходит следующие уроки. И вернуться к
-					тому, что уже прошло – не возможно.<br></article>
+	<main class="content p-2">
+		<%- include('partials/navbar'); %>
 
+		<div class="row justify-content-md-center">
+			<div class="col-12 mb-4" id="description_title">
+				<div class="card bg-secondary-alt shadow-sm">
+					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
+						<h3>Детская нумерология <br> Воспитание кармой</h3>
+					</div>
+					<div class="card-body p-4">
+						<article>
+							<b>Карма</b> – это программа, созданная для воспитания человека. Её задача – помочь нашей душе
+							гармонично развиваться и эволюционировать.
+							Карма дает нам уроки, пройдя которые мы переходим на новый уровень.<br><br>
+							Существует 22 вида уроков. Период первого урока – 100 дней, на протяжении которых
+							формируется моральный облик ребенка на всю жизнь.
+							Эти уроки каждый человек проходит в первые 6 лет жизни. И задача родителей помочь ребенку достойно
+							освоить их.<br><br>
+							Ребёнок не случайно попадает в ту или иную среду. Душа выбирает себе родителей, способных
+							создать наилучшие условия для прохождения испытаний. И на практике мы часто видим, как в неблагополучных
+							семьях вырастают гении. А бывает и наоборот, когда ребенок, воспитываясь в очень обеспеченной семье
+							способен на воровство.<br><br>
+							Есть всего 100 дней в целой жизни, которые закладывают в ребенке отношение к той
+							или иной области. Именно эти 100 дней могут сделать человека честным и щедрым или
+							жадным и подлым. Вернуться к тому, что уже прошло – не возможно.<br>
+						</article>
+					</div>
+				</div>
 			</div>
-			<div class="col-12">
-				<h5>Введите дату рождения:</h5>
-
-				<div class="input-group mb-3">
-
-					<input type="number" id="dateInputDay" class="form-control" placeholder="ДД" aria-label="День"
-						aria-describedby="basic-addon1" min="01" max="31" step="1" maxlength=2
-						onkeyup="moveOnMax(this, 'dateInputMonth')" onchange="leadingZeros(this); checkDate()"
-						pattern="[00-09]{2}">
-
-					<input type="number" id="dateInputMonth" class="form-control" placeholder="ММ" aria-label="Месяц"
-						aria-describedby="basic-addon1" min="01" max="12" step="1" maxlength=2
-						onkeyup="moveOnMax(this, 'dateInputYear')" onchange="leadingZeros(this); checkDate()"
-						pattern="[00-09]{2}">
-
-					<input type="number" id="dateInputYear" class="form-control" placeholder="ГГГГ" aria-label="Год"
-						aria-describedby="basic-addon1" min="1799" max="2021" step="1" maxlength=4
-						onkeyup="moveOnMax(this, 'dateInputYear')" onchange="checkDate()" pattern="[0-9]{4}">
-
-				</div>
-
-
-				<div id="alerts"></div>
-
-				<div class="d-flex justify-content-center">
-					<div class="spinner-border" role="status" id="spinners" style="display: none;">
-						<span class="sr-only">Loading...</span>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-12 mb-4" id="description_title">
+				<div class="card bg-secondary-alt shadow-sm">
+					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
+						<h5>Введите дату рождения ребёнка</h5>
 					</div>
-				</div>
+					<div class="card-body p-4">
+						<label for="birth_date_form">День, месяц, год:</label>
+						<div class="input-group mb-3 form-control" id="birth_date_form">
 
-				<div class="input-group mb-3" id="tabulation" style="display: none;">
+							<input type="number" id="dateInputDay" class="form-control" placeholder="ДД" aria-label="День"
+								aria-describedby="basic-addon1" min="01" max="31" step="1" maxlength=2
+								onkeyup="moveOnMax(this, 'dateInputMonth')" onchange="leadingZeros(this)" pattern="[00-09]{2}">
 
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item" role="presentation">
-							<a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#contentOPV" role="tab"
-								aria-controls="contentOPV" aria-selected="true">Рассчет ОПВ</a>
-						</li>
-						<li class="nav-item" role="presentation">
-							<a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#contentregrets" role="tab"
-								aria-controls="contentregrets" aria-selected="false">Цикл обратки кармы</a>
-						</li>
-					</ul>
+							<input type="number" id="dateInputMonth" class="form-control" placeholder="ММ" aria-label="Месяц"
+								aria-describedby="basic-addon1" min="01" max="12" step="1" maxlength=2
+								onkeyup="moveOnMax(this, 'dateInputYear')" onchange="leadingZeros(this)" pattern="[00-09]{2}">
 
-				</div>
-
-				<div class="tab-content" id="myTabContent" style="display: none;">
-
-					<div class="tab-pane fade show active" id="contentOPV" role="tabpanel"
-						aria-labelledby="Рассчет ОПВ">
-
-						<div id="learnage_container">
+							<input type="number" id="dateInputYear" class="form-control" placeholder="ГГГГ" aria-label="Год"
+								aria-describedby="basic-addon1" min="1799" max="2021" step="1" maxlength=4
+								onkeyup="moveOnMax(this, 'dateInputYear')" pattern="[0-9]{4}">
 
 						</div>
+						<button onclick="checkDate()" class="btn btn-primary mb-2 me-2" type="button" id="birth_date_form_button">
+							<i class="fas fa-play me-2"></i> Произвести рассчёт уроков</button>
 
-						<table class="table table-bordered table-hover" id="table1">
-							<caption>*л, м, д – лет, месяцев, дней</caption>
-							<thead class="table-dark">
-								<tr>
-									<th scope="col">Период</th>
-									<th scope="col">Возраст*</th>
-									<th scope="col">ОПВ**</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-						<!-- <button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button> -->
+						<div id="alerts"></div>
 
 					</div>
-
-					<div class="tab-pane fade" id="contentregrets" role="tabpanel" aria-labelledby="Цикл обратки кармы">
-
-						<div class="container-fluid" id="regrets_container">
-
-						</div>
-
-						<!-- <button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button> -->
-
-					</div>
-
 				</div>
-
 			</div>
 		</div>
 
+		<div class="row justify-content-md-center" id="kids_result_container" style="display: none;">
+			<div class="col-12 mb-4" id="description_title">
+				<div class="card bg-secondary-alt shadow-sm">
+					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
+						<div id="learnage_container">
+						</div>
+					</div>
+					<div class="card-body p-4 px-0">
+
+						<div class="d-flex justify-content-center">
+							<div class="spinner-border" role="status" id="spinners" style="display: none;">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
+
+						<div class="input-group mb-3" id="tabulation" style="display: none;">
+							<ul class="nav nav-pills nav-fill flex-column flex-md-row px-4" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#contentOPV" role="tab"
+										aria-controls="contentOPV" aria-selected="true">Рассчет ОПВ</a>
+								</li>
+								<li class="nav-item" role="presentation">
+									<a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#contentregrets" role="tab"
+										aria-controls="contentregrets" aria-selected="false">Цикл обратки кармы</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="tab-content" id="myTabContent" style="display: none;">
+
+							<div class="tab-pane fade show active" id="contentOPV" role="tabpanel" aria-labelledby="Рассчет ОПВ">
+
+
+
+								<table class="table table-bordered table-hover" id="table1">
+									<caption class="px-4">*л, м, д – лет, месяцев, дней</caption>
+									<thead class="table-light">
+										<tr>
+											<th scope="col">Период</th>
+											<th scope="col">Возраст*</th>
+											<th scope="col">ОПВ**</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<!-- <button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button> -->
+
+							</div>
+
+							<div class="tab-pane fade" id="contentregrets" role="tabpanel" aria-labelledby="Цикл обратки кармы">
+
+								<div class="container-fluid" id="regrets_container">
+								</div>
+
+								<!-- <button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button> -->
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 		<%- include('partials/footer'); %>
-		<script src="script/kids_script.js"></script>
+	</main>
+	<script src="script/kids_script.js"></script>
 
 </body>
 

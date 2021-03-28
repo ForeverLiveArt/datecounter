@@ -17,7 +17,7 @@ $gray-700: #66799e;
 $gray-800: #506690;   
 $gray-900: #4A5073;
 $dark    : #262B40; 
-$black   : #2e3650;
+$black   : #0E0357;
 
 // fusv-disable
 $grays: (
@@ -68,9 +68,9 @@ $colors: (
 // scss-docs-end colors-map
 
 // Color scheme
-$default:       #262B40;
-$primary:       #262B40;
-$secondary:     #F8BD7A;
+$default:       #3626A3;
+$primary:       #A39325;
+$secondary:     #3626A3;
 $tertiary:      #1B998B;
 $quaternary:    #0948B3;
 
@@ -522,7 +522,7 @@ $fontawesome-webfonts-path:   '../vendor/font-awesome/webfonts';
 $font-awesome-5:              'Font Awesome 5 Free';
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Nunito Sans', sans-serif;
+$font-family-sans-serif:      'Noto Sans', sans-serif;
 // stylelint-enable value-keyword-case
 $font-family-base:            var(--bs-font-sans-serif);
 $font-family-code:            var(--bs-font-monospace);
@@ -648,7 +648,7 @@ $table-active-bg-factor:      .1;
 $table-active-bg:             rgba($black, $table-active-bg-factor);
 
 $table-hover-color:           $table-color;
-$table-hover-bg-factor:       .075;
+$table-hover-bg-factor:       .025;
 $table-hover-bg:              rgba($black, $table-hover-bg-factor);
 
 $table-border-factor:         .1;
@@ -1167,8 +1167,8 @@ $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://w
 $navbar-dark-toggler-border-color:  rgba($white, .1);
 
 $navbar-light-color:                rgba($black, .9);
-$navbar-light-hover-color:          rgba($black, 1);
-$navbar-light-active-color:         rgba($black, 1);
+$navbar-light-hover-color:          rgba($secondary, 1);
+$navbar-light-active-color:         rgba($secondary, 1);
 $navbar-light-disabled-color:       rgba($black, .9);
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
 $navbar-light-toggler-border-color: rgba($black, .1);

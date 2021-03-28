@@ -62,6 +62,7 @@ async function calculateGraph(dateString, timeString, nameString, langString) {
             
             $('#myChart').css('display', 'none');
             $('#spinners').css('display', 'initial');
+            
 
             $('#myChart').remove();
             $('#health_main').append('<canvas id="myChart" style="display:none;"><canvas>');

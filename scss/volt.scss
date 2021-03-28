@@ -15,17 +15,17 @@
 
 **/
 
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:300,400,600,700&display=swap');
 
 // Bootstrap mixins and functions
-@import "../../node_modules/bootstrap/scss/mixins";
-@import "../../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/functions";
 
 // Change variables here
 @import "volt/variables";
 
 // Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 // Vendor
 @import "volt/vendor";
@@ -38,7 +38,7 @@
 @import "volt/reboot";
 @import "volt/utilities";
 
-// Layout
+// Layoutt
 @import "volt/layout";
 
 // Components

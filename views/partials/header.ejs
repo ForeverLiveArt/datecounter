@@ -1,3 +1,4 @@
+<!-- MOBILE NAVBAR -->
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
     <a class="navbar-brand mr-lg-5" href="/">
         <img class="navbar-brand-dark" src="img/favicon.png" alt="Volt logo" />
@@ -9,94 +10,84 @@
         </button>
     </div>
 </nav>
+<!-- MOBILE NAVBAR END -->
 
-<div class="container-fluid bg-soft">
-    
+<!-- SIDEBAR -->
+<nav id="sidebarMenu" class="sidebar d-md-block bg-primary text-white collapse" data-simplebar>
+    <div class="sidebar-inner px-3 pt-3">
+        <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
 
-            <nav id="sidebarMenu" class="sidebar d-md-block bg-primary text-white collapse" data-simplebar>
-                <div class="sidebar-inner px-4 pt-3">
-                    <div
-                        class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
-
-                        <div class="d-flex align-items-center">
-
-                            <div class="d-block" id='logins_mobile'>
-                                <h2 class="h6">Здравствуйте, Гость</h2>
-                                <a href="/login" class="btn btn-secondary text-dark btn-xs">
-                                    <span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>
-                                    Войти
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="collapse-close d-md-none">
-                            <a href="#sidebarMenu" class="fas fa-times" data-bs-toggle="collapse"
-                                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
-                                aria-label="Toggle navigation"></a>
-                        </div>
-                    </div>
-
-                    <ul class="navbar-nav align-items-center" id='logins'> </ul>
-                    
-                    <ul class="navbar-nav align-items-center" id='banks'> </ul>
-
-                    <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <span class="sidebar-icon"><span class="fas fa-home"></span></span>
-                                <span>Главная</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="/karma" class="nav-link">
-                                <span class="sidebar-icon"><span class="fas fa-dharmachakra"></span></span>
-                                <span>Рассчет кармы</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="/kids" class="nav-link">
-                                <span class="sidebar-icon"><span class="fas fa-baby"></span></span>
-                                <span>Воспитание ребёнка</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="/health" class="nav-link">
-                                <span class="sidebar-icon"><span class="fas fa-heartbeat"></span></span>
-                                <span>График здоровья</span>
-                            </a>
-                        </li>
-
-
-
-                        <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
-
-                        <li class="nav-item">
-                            <a href="/about" target="_blank" class="nav-link d-flex align-items-center">
-                                <span class="sidebar-icon"><span class="far fa-question-circle"></span></span>
-                                <span>Поддержка</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/refill" target="_blank" class="nav-link d-flex align-items-center">
-                                <span class="sidebar-icon"><span class="fas fa-book"></span></span>
-                                <span>Пополнение счёта</span>
-                            </a>
-                        </li>
-
-                    </ul>
+            <div class="d-flex align-items-center">
+                <div id="wellcome_mobile">
+                    <h2 class="h6">Здравствуйте, гость</h2>
+                    <a href="/login" class="btn btn-secondary text-light btn-xs">
+                      <span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Войти</a>
                 </div>
-            </nav>
+                <div class="d-block" id="logins_mobile" style="display:none;">
+                    <!-- USER SCRIPT MOBILE-->
+                </div>
+            </div>
 
-            <main class="content">
-                <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark pl-0 pr-2 pb-0">
-                    <div class="container-fluid px-0">
-                        <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
+            <div class="collapse-close d-md-none">
+                <a href="#sidebarMenu" class="fas fa-times" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation"></a>
+            </div>
+            
+        </div>
 
-                            <!-- Navbar links -->
+        
 
-                        </div>
-                    </div>
-                </nav>
+        <ul class="nav flex-column">
+            <a class="navbar-brand mr-lg-5" href="/" id="desktop_only">
+                <img class="navbar-brand-dark" src="img/favicon.png" alt="COXO.digital" />
+                <h8 class="p-2">Нумерология</h8>
+            </a>
 
+            <li role="separator" class="dropdown-divider mt-4 mb-3 border-white" style="opacity:0.3" id="desktop_only"></li>
+
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-home"></span></span>
+                    <span>Главная</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="/karma" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-dharmachakra"></span></span>
+                    <span>Рассчет кармы</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="/kids" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-baby"></span></span>
+                    <span>Воспитание ребёнка</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="/health" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-heartbeat"></span></span>
+                    <span>График здоровья</span>
+                </a>
+            </li>
+
+
+
+            <li role="separator" class="dropdown-divider mt-4 mb-3 border-white" style="opacity:0.3"></li>
+
+            <li class="nav-item">
+                <a href="/about" target="_blank" class="nav-link d-flex align-items-center">
+                    <span class="sidebar-icon"><span class="far fa-question-circle"></span></span>
+                    <span>Поддержка</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/refill" target="_blank" class="nav-link d-flex align-items-center">
+                    <span class="sidebar-icon"><span class="fas fa-book"></span></span>
+                    <span>Пополнение счёта</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
