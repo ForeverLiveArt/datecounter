@@ -8,7 +8,7 @@ const express = require('express'),
     { auth, requiresAuth } = require('express-openid-connect'),
     { main_counter, health_counter, kids_counter, auth_conf } = require('./app_api.js');
 
-
+      
 app.listen(process.env.PORT, () => console.log('App_started'));
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
@@ -17,28 +17,62 @@ app.use(cors());
 app.set('view engine', 'ejs');
 
 
+admin.initializeApp({
+    credential: admin.credential.applicationDefault()
+    });
+    const db = admin.firestore();
+
+async function check_user(userInfo) {
+    const userRef = db.collection('registered').doc(userInfo.sub);
+    const doc = await userRef.get();
+    if (!doc.exists) {
+        const data = {
+            name: userInfo.name,
+            email: userInfo.email,
+            email_verified: userInfo.email_verified,
+            sub: userInfo.sub,
+            bank: 0
+        };
+        const res = await db.collection('registered').doc(userInfo.sub).set(data);
+        console.log(res);
+        return (0);
+    } else {
+        const bank = await doc.get('bank');
+        const data = {
+            name: userInfo.name,
+            email: userInfo.email,
+            email_verified: userInfo.email_verified,
+        };
+        const res = await db.collection('registered').doc(userInfo.sub).set(data, { merge: true });
+        console.log(res);
+        return (bank);
+    }
+}
+
+
 app.get("/", function(request, response){
     response.render('home');
-});
-
-app.get("/kids", function(request, response){
-    response.render('kids');
-});
-
-app.get("/health", function(request, response){
-    response.render('health');
 });
 
 app.get("/karma", function(request, response){
     response.render('karma');
 });
+app.get("/kids", function(request, response){
+    response.render('kids');
+});
+app.get("/health", function(request, response){
+    response.render('health');
+});
 
 
-app.post('/logged', (request, response) => {  
+app.post('/logged', async (request, response) => {  
     if ( request.oidc.isAuthenticated() ) { 
-        let userInfo = request.oidc.user;
+        const userInfo = request.oidc.user;    
         console.log(userInfo);
-        response.json({ isLogged: 'true', user: userInfo });
+        const bank = await check_user(userInfo);
+        console.log(bank);
+        response.json({ isLogged: 'true', user: userInfo, bank: bank });
+        
      } else {
         response.json({ isLogged: 'false' });
      }
@@ -55,7 +89,6 @@ app.post('/api', (request, response) => {
 app.post('/kids_api', (request, response) => {
     response.json(kids_counter(request));
 }); 
-
 
 app.post('/health_api', (request, response) => {
     //if ( request.oidc.isAuthenticated() ) { 

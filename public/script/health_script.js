@@ -58,7 +58,7 @@ async function calculateGraph(dateString, timeString, nameString, langString) {
         const answer = await response.json();
         //_
         
-        if (answer.graphRes != false) {
+        if (answer.graphRes !== false) {
             
             $('#myChart').css('display', 'none');
             $('#spinners').css('display', 'initial');
@@ -124,7 +124,7 @@ async function calculateGraph(dateString, timeString, nameString, langString) {
                             ticks: {
                                 // Include a dollar sign in the ticks
                                 callback: function(value, index, values) {
-                                        if (value != 0) {
+                                        if (value !== 0) {
                                     return Math.round(multiplier + value);
                                     } else {
                                     return multiplier + value;

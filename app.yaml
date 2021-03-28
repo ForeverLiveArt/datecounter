@@ -1,4 +1,4 @@
-runtime: nodejs12 # or another supported version
+runtime: nodejs14 # or another supported version
 instance_class: B1
 
 # This sample incurs costs to run on the App Engine flexible environment.

@@ -1,6 +1,4 @@
-const {
-    DateTime
-} = require('luxon');
+const { DateTime } = require('luxon');
 DateTime.local();
 
 const {
@@ -12,7 +10,7 @@ const {
     modulo9,
     shift,
     langArray
-} = require('./app_tools.js');
+    } = require('./app_tools.js');
 
 const auth_conf = ({
     authRequired: false,
