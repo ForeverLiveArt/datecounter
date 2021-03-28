@@ -1,170 +1,155 @@
 <%- include('partials/head'); %>
 
-	<body onload="checkDate()">
-		
-		<%- include('partials/header', {title:'Нумерология кармы'}); %>
-		
-				
+<body onload="checkDate()">
+
+	<%- include('partials/header', {title:'Детская нумерология'}); %>
+	<main class="content p-2">
+		<%- include('partials/navbar'); %>
+
+
 		<div class="container-sm card border-light shadow-sm" style="padding-top: 2.22rem; max-width: 40rem">
 			<div class='col-12 mb-4'></div>
 
 			<div class="input-group mb-3">
-  				<span class="input-group-text" id="basic-addon1">
-  					Дата
-  				</span>
-  				<input type="number" id="dateInputDay" class="form-control" 
-  					   placeholder="ДД" aria-label="День" 
-  					   aria-describedby="basic-addon1" 
-  					   min="01" max="31" step="1" maxlength="2" 
-  					   onkeyup="moveOnMax(this, 'dateInputMonth')"
-  					   onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
-  	
-  				<input type="number" id="dateInputMonth" class="form-control" 
-  					   placeholder="ММ" aria-label="Месяц" 
-  					   aria-describedby="basic-addon1"
-  					   min="01" max="12" step="1" maxlength="2" 
-  					   onkeyup="moveOnMax(this, 'dateInputYear')"
-  					   onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+				<span class="input-group-text" id="basic-addon1">
+					Дата
+				</span>
+				<input type="number" id="dateInputDay" class="form-control" placeholder="ДД" aria-label="День"
+					aria-describedby="basic-addon1" min="01" max="31" step="1" maxlength="2"
+					onkeyup="moveOnMax(this, 'dateInputMonth')" onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
 
-  				<input type="number" id="dateInputYear" class="form-control" 
-  					   placeholder="ГГГГ" aria-label="Год" 
-  					   aria-describedby="basic-addon1"
-  					   min="1799" max="2021" step="1" maxlength="4" 
-  					   onkeyup="moveOnMax(this, 'dateInputYear')"
-  					   onchange="checkDate()" pattern="[0-9]{4}">
+				<input type="number" id="dateInputMonth" class="form-control" placeholder="ММ" aria-label="Месяц"
+					aria-describedby="basic-addon1" min="01" max="12" step="1" maxlength="2"
+					onkeyup="moveOnMax(this, 'dateInputYear')" onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+
+				<input type="number" id="dateInputYear" class="form-control" placeholder="ГГГГ" aria-label="Год"
+					aria-describedby="basic-addon1" min="1799" max="2021" step="1" maxlength="4"
+					onkeyup="moveOnMax(this, 'dateInputYear')" onchange="checkDate()" pattern="[0-9]{4}">
 			</div>
 
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">
 					Имя
 				</span>
-				<input type="text" id="nameString" class="form-control" 
-					   placeholder="Имя" aria-label="День" 
-					   aria-describedby="basic-addon1" 
-					   maxlength="50" onchange="checkDate()">
-		 	</div>
+				<input type="text" id="nameString" class="form-control" placeholder="Имя" aria-label="День"
+					aria-describedby="basic-addon1" maxlength="50" onchange="checkDate()">
+			</div>
 
 			<div class="input-group mb-3">
-            	<span class="input-group-text" id="basic-addon0">
-  					Язык
-  				</span>
-            	<select class="form-select" aria-label="Local" id="langString" onchange="checkDate()">
-                	<option value="0">English</option>
-                	<option value="1" selected>Русский</option>
+				<span class="input-group-text" id="basic-addon0">
+					Язык
+				</span>
+				<select class="form-select" aria-label="Local" id="langString" onchange="checkDate()">
+					<option value="0">English</option>
+					<option value="1" selected>Русский</option>
 					<option value="2">Slovensky</option>
-            	</select>
-   			</div>
-
-
-		<div id="alerts"></div>
-
-		<div class="d-flex justify-content-center" >
-  			<div class="spinner-border" role="status" id="spinners" style="display: none;">
-  				  <span class="sr-only">Loading...</span>
-  			</div>
-		</div>	
-
-		<div class="input-group mb-3" id="tabulation" style="display: none;">
-
-  			<ul class="nav nav-tabs" id="myTab" role="tablist">
-  				<li class="nav-item" role="presentation">
-    					<a class="nav-link active" id="opv-tab" 
-    					data-bs-toggle="tab" href="#contentOPV" 
-    					role="tab" aria-controls="contentOPV" aria-selected="true">ОПВ</a>
-  				</li>
-  				<li class="nav-item" role="presentation">
-    					<a class="nav-link" id="regrets-tab" 
-    					data-bs-toggle="tab" href="#contentRegrets" 
-    					role="tab" aria-controls="contentRegrets" aria-selected="false">Цикл кармы</a>
- 				</li>
-				<li class="nav-item" role="presentation">
-						<a class="nav-link" id="profile-tab" 
-						data-bs-toggle="tab" href="#contentName" 
-						role="tab" aria-controls="contentName" aria-selected="false">Арканы</a>
-			 	</li>
-			</ul>
-
-		</div>
-
-		<div class="tab-content" id="myTabContent" style="display: none;">
-
-
-			<div class="tab-pane fade show active" id="contentOPV" role="tabpanel" aria-labelledby="Рассчет ОПВ">
-
-				<table class="table table-striped table-bordered table-hover table-sm table-responsive" 
-						id="table1">
-					<caption>*л, м, д – лет, месяцев, дней</caption>
-	  				<thead class="thead-light">
-	    				<tr>
-	      					<th scope="col" >Дата</th>
-	      					<th scope="col" >Возраст л, м, д*</th>
-	      					<th scope="col" >ОПВ1</th>
-	      					<th scope="col" >ОПВ2</th>
-	      					<th scope="col" >ОПВ3</th>
-	    				</tr>
-	  				</thead>
-	  				<tbody>
-	  				</tbody>
-				</table>	
-				<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
-
+				</select>
 			</div>
 
 
-			<div class="tab-pane fade" id="contentRegrets" role="tabpanel" aria-labelledby="Цикл обратки кармы">
+			<div id="alerts"></div>
 
-				<div class="container-fluid" id="regrets_container">
-					
+			<div class="d-flex justify-content-center">
+				<div class="spinner-border" role="status" id="spinners" style="display: none;">
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+
+			<div class="input-group mb-3" id="tabulation" style="display: none;">
+
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<a class="nav-link active" id="opv-tab" data-bs-toggle="tab" href="#contentOPV" role="tab"
+							aria-controls="contentOPV" aria-selected="true">ОПВ</a>
+					</li>
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" id="regrets-tab" data-bs-toggle="tab" href="#contentRegrets" role="tab"
+							aria-controls="contentRegrets" aria-selected="false">Цикл кармы</a>
+					</li>
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#contentName" role="tab"
+							aria-controls="contentName" aria-selected="false">Арканы</a>
+					</li>
+				</ul>
+
+			</div>
+
+			<div class="tab-content" id="myTabContent" style="display: none;">
+
+
+				<div class="tab-pane fade show active" id="contentOPV" role="tabpanel" aria-labelledby="Рассчет ОПВ">
+
+					<table class="table table-striped table-bordered table-hover table-sm table-responsive" id="table1">
+						<caption>*л, м, д – лет, месяцев, дней</caption>
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">Дата</th>
+								<th scope="col">Возраст л, м, д*</th>
+								<th scope="col">ОПВ1</th>
+								<th scope="col">ОПВ2</th>
+								<th scope="col">ОПВ3</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
+
 				</div>
 
-				<table class="table table-bordered table-hover table-sm table-responsive" 
-						id="table2">
-					<caption>*л, м – лет, месяцев</caption>
-	  				<thead class="thead-light">
-	    				<tr>
-	    					<th scope="col" >Дата</th>
-	      					<th scope="col" >Возраст л, м*</th>
-	      					<th scope="col" >СЖ</th>
-	    				</tr>
-	  				</thead>
-	  				<tbody>
-	  				</tbody>
-				</table>	
-				<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
 
-			</div>
+				<div class="tab-pane fade" id="contentRegrets" role="tabpanel" aria-labelledby="Цикл обратки кармы">
+
+					<div class="container-fluid" id="regrets_container">
+
+					</div>
+
+					<table class="table table-bordered table-hover table-sm table-responsive" id="table2">
+						<caption>*л, м – лет, месяцев</caption>
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">Дата</th>
+								<th scope="col">Возраст л, м*</th>
+								<th scope="col">СЖ</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
+
+				</div>
 
 
-			<div class="tab-pane fade" id="contentName" role="tabpanel" aria-labelledby="Таблица арканов">
+				<div class="tab-pane fade" id="contentName" role="tabpanel" aria-labelledby="Таблица арканов">
 
-				<table class="table table-bordered table-hover table-sm table-responsive" 
-						id="table3">
-					
-	  				<thead class="thead-light">
-	    				<tr>
-	    					<th scope="col" >Переменная</th>
-	      					<th scope="col" >Значение</th>
-	    				</tr>
-	  				</thead>
-	  				<tbody>
-	  				</tbody>
-				</table>	
-				<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
+					<table class="table table-bordered table-hover table-sm table-responsive" id="table3">
+
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">Переменная</th>
+								<th scope="col">Значение</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<button onClick="savePDF()" type="button" class="btn btn-light">Сохранить PDF</button>
+
+				</div>
 
 			</div>
 
 		</div>
 
-	</div>
-	
 
 
 
-	<%- include('partials/footer'); %>
-	<script src="script/karma_script.js"></script>
-		
+		<%- include('partials/footer'); %>
+		<script src="script/karma_script.js"></script>
+	</main>
 
-	</body>
+</body>
 
 
 </html>

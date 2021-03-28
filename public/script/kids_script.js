@@ -29,12 +29,14 @@ function checkDate() { //валидация ввода
         calculateOPV(datestring);
     } else {
         $('#birth_date_form').removeClass( 'is-valid' ).addClass( 'is-invalid' );
-        $('#birth_date_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
-        $('#alerts').prepend( //текст ошибки даты
-            '<div id="lertx" class="alert alert-light alert-dismissible fade show" role="alert">' +
-            'Дата введена некорректно.' +
-            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-            '</div>');
+        $('#main_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
+        $('#alerts').prepend(` 
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span class="fas fa-bullhorn me-1"></span>
+                            <strong>Внимание!</strong> Дата введена в неправильном формате
+                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            `);
     }
 }
 
@@ -63,14 +65,13 @@ async function calculateOPV(dateString) {
         let intervals = 22; //количество сотен в цикле
         let cycle = 1;
 
-        $('#birth_date_form').removeClass( 'is-invalid' ).addClass( 'is-valid' );
-        $('#birth_date_form_button').removeClass( 'btn-primary' ).removeClass( 'btn-danger' ).addClass( 'btn-success' );
-        $('#lertx').remove(); //очистить ошибки если их нет
+        $('#birth_date_form').removeClass( 'is-invalid' ).addClass( 'is-valid' ); //form green
+        $('#main_form_button').removeClass( 'btn-primary' ).removeClass( 'btn-danger' ).addClass( 'btn-success' ); //button green
+        $('#alerts').empty(); //очистить ошибки если их нет
 
-
-        $('#myTabContent').css('display', 'none');
-        $('#kids_result_container').css('display', 'flex');
-        $('#spinners').css('display', 'initial');
+        $('#myTabContent').css('display', 'none'); //hide old result if it was visible
+        
+        $('#spinners').css('display', 'flex');
 
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
         $("#learnage_container").empty();
@@ -149,6 +150,7 @@ async function calculateOPV(dateString) {
             '<h4>Знак сожалений ребёнка — ' + answer.regrets +'</h4>' +
             '<article>' + regretsTextArray[answer.regrets] + '</article>'
         );
+        
 
         //_____________________________________________________________________
 
@@ -168,6 +170,8 @@ async function calculateOPV(dateString) {
         $('#spinners').css('display', 'none');
         $('#myTabContent').css('display', 'initial');
         $('#tabulation').css('display', 'initial');
+        $('#result_container').css('display', 'flex'); //show result
+        $('#spinners').css('display', 'none'); //hide spinner in the end
         //_____________________________________________________________________
         $('.scroller').click(function() { //следующий знак прокрутка страницы
             let sectionTo = $(this).attr('href');
@@ -177,12 +181,15 @@ async function calculateOPV(dateString) {
 
     } else {
         $('#spinners').css('display', 'none');
-        $('#birth_date_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
-        $('#alerts').prepend( //текст ошибки даты
-            '<div id="lertx" class="alert alert-light alert-dismissible fade show" role="alert">' +
-            'Дата введена некорректно.' +
-            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-            '</div>');
+        $('#main_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
+        $('#birth_date_form').removeClass( 'is-valid' ).addClass( 'is-invalid' );
+        $('#alerts').prepend(` 
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <span class="fas fa-bullhorn me-1"></span>
+                            <strong>Внимание!</strong> Дата введена в неправильном формате
+                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            `);
     }
 }
 

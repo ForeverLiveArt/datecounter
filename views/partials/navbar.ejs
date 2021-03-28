@@ -4,27 +4,24 @@
       
       <!-- Navbar links -->
       <ul class="navbar-nav align-items-center">
-        <div id="wellcome">
+        <div id="wellcome" style="visibility: hidden;">
           <h2 class="h6">Здравствуйте, Гость</h2>
           <a href="/login" class="btn btn-secondary text-light btn-xs">
             <span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Войти</a>
         </div>
-        <li class="nav-item dropdown" style="display:none;" id="login_container">
-          <a class="nav-link pt-1 px-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+        <li class="nav-item dropdown" style="display:none;" id="logins_container">
+          <a class="nav-link pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <div class="media d-flex align-items-center" id="logins">
               <!-- user_scipt logins -->
             </div>
           </a>
           <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
-            <a class="dropdown-item font-weight-bold" href="#"><span class="far fa-user-circle"></span>My Profile</a>
-            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-cog"></span>Settings</a>
-            <a class="dropdown-item font-weight-bold" href="#"><span
-                class="fas fa-envelope-open-text"></span>Messages</a>
-            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-user-shield"></span>Support</a>
+            <a class="dropdown-item font-weight-bold inactive" href="#"><span class="far fa-user-circle"></span>Мой профиль</a>
+            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-user-shield"></span>Поддержка</a>
             <div role="separator" class="dropdown-divider"></div>
             <a class="dropdown-item font-weight-bold" href="#"><span
-                class="fas fa-sign-out-alt text-danger"></span>Logout</a>
+                class="fas fa-sign-out-alt text-danger"></span>Выйти из профиля</a>
           </div>
         </li>
       </ul>

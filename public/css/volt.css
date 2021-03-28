@@ -124,7 +124,7 @@ hr:not([size]) {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.3;
   color: #262B40;
 }
@@ -150,12 +150,12 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: calc(1.3rem + 0.6vw);
+  font-size: calc(1.325rem + 0.9vw);
 }
 
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 }
 
@@ -30569,563 +30569,6 @@ label {
 }
 
 /**
- * = Alerts
- */
-.alert {
-  padding: 1rem 1rem;
-  border: 0;
-  font-size: 0.875rem;
-  border-radius: 0.5rem;
-}
-
-.alert.alert-sm {
-  padding: .5rem 1rem;
-}
-
-.alert.alert-secondary {
-  color: #262B40;
-}
-
-.alert .alert-inner--icon {
-  display: inline-block;
-  font-size: 1.25rem;
-  margin-right: 1.25rem;
-  vertical-align: middle;
-}
-
-.alert .alert-inner--icon i {
-  position: relative;
-  top: 1px;
-}
-
-.alert .alert-inner--text {
-  display: inline-block;
-  color: #ffffff;
-  vertical-align: middle;
-}
-
-.alert .alert-inner--text a {
-  font-weight: 600;
-}
-
-.alert-heading {
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin-top: .15rem;
-}
-
-.alert-dismissible .close {
-  top: 50%;
-  right: 1rem;
-  padding: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.6);
-  opacity: 1;
-  top: 1rem;
-  right: .5rem;
-}
-
-.alert-dismissible .close:hover, .alert-dismissible .close:focus {
-  color: rgba(255, 255, 255, 0.9);
-  opacity: 1 !important;
-}
-
-.alert-dismissible .close > span:not(.sr-only) {
-  font-size: 1.5rem;
-  background-color: transparent;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.alert-dismissible .close:hover > span:not(.sr-only), .alert-dismissible .close:focus > span:not(.sr-only) {
-  background-color: transparent;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.alert-primary {
-  color: #A39325;
-  background-color: #A39325;
-  border-color: #A39325;
-}
-
-.alert-primary .alert-link {
-  color: #796e1c;
-}
-
-.alert-secondary {
-  color: #3626A3;
-  background-color: #3626A3;
-  border-color: #3626A3;
-}
-
-.alert-secondary .alert-link {
-  color: #281c7a;
-}
-
-.alert-tertiary {
-  color: #1B998B;
-  background-color: #1B998B;
-  border-color: #1B998B;
-}
-
-.alert-tertiary .alert-link {
-  color: #136e64;
-}
-
-.alert-quaternary {
-  color: #0948B3;
-  background-color: #0948B3;
-  border-color: #0948B3;
-}
-
-.alert-quaternary .alert-link {
-  color: #073482;
-}
-
-.alert-primary-app {
-  color: #EBF4F6;
-  background-color: #EBF4F6;
-  border-color: #EBF4F6;
-}
-
-.alert-primary-app .alert-link {
-  color: #c8e1e6;
-}
-
-.alert-secondary-app {
-  color: #424AA0;
-  background-color: #424AA0;
-  border-color: #424AA0;
-}
-
-.alert-secondary-app .alert-link {
-  color: #33397c;
-}
-
-.alert-light {
-  color: #eaedf2;
-  background-color: #eaedf2;
-  border-color: #eaedf2;
-}
-
-.alert-light .alert-link {
-  color: #cbd2df;
-}
-
-.alert-lighten {
-  color: #F0F3F6;
-  background-color: #F0F3F6;
-  border-color: #F0F3F6;
-}
-
-.alert-lighten .alert-link {
-  color: #d0dae3;
-}
-
-.alert-success {
-  color: #05A677;
-  background-color: #05A677;
-  border-color: #05A677;
-}
-
-.alert-success .alert-link {
-  color: #047454;
-}
-
-.alert-info {
-  color: #0948B3;
-  background-color: #0948B3;
-  border-color: #0948B3;
-}
-
-.alert-info .alert-link {
-  color: #073482;
-}
-
-.alert-warning {
-  color: #f5b759;
-  background-color: #f5b759;
-  border-color: #f5b759;
-}
-
-.alert-warning .alert-link {
-  color: #f2a229;
-}
-
-.alert-danger {
-  color: #FA5252;
-  background-color: #FA5252;
-  border-color: #FA5252;
-}
-
-.alert-danger .alert-link {
-  color: #f92020;
-}
-
-.alert-white {
-  color: #ffffff;
-  background-color: #ffffff;
-  border-color: #ffffff;
-}
-
-.alert-white .alert-link {
-  color: #e6e6e6;
-}
-
-.alert-gray {
-  color: #4A5073;
-  background-color: #4A5073;
-  border-color: #4A5073;
-}
-
-.alert-gray .alert-link {
-  color: #363a54;
-}
-
-.alert-neutral {
-  color: #ffffff;
-  background-color: #ffffff;
-  border-color: #ffffff;
-}
-
-.alert-neutral .alert-link {
-  color: #e6e6e6;
-}
-
-.alert-dark {
-  color: #262B40;
-  background-color: #262B40;
-  border-color: #262B40;
-}
-
-.alert-dark .alert-link {
-  color: #131620;
-}
-
-.alert-soft {
-  color: #f5f8fb;
-  background-color: #f5f8fb;
-  border-color: #f5f8fb;
-}
-
-.alert-soft .alert-link {
-  color: #d1dfec;
-}
-
-.alert-black {
-  color: #0E0357;
-  background-color: #0E0357;
-  border-color: #0E0357;
-}
-
-.alert-black .alert-link {
-  color: #060126;
-}
-
-.alert-blue {
-  color: #0948B3;
-  background-color: #0948B3;
-  border-color: #0948B3;
-}
-
-.alert-blue .alert-link {
-  color: #073482;
-}
-
-.alert-pink {
-  color: #C96480;
-  background-color: #C96480;
-  border-color: #C96480;
-}
-
-.alert-pink .alert-link {
-  color: #b94162;
-}
-
-.alert-cyan {
-  color: #63b1bd;
-  background-color: #63b1bd;
-  border-color: #63b1bd;
-}
-
-.alert-cyan .alert-link {
-  color: #469aa7;
-}
-
-.alert-purple {
-  color: #8965e0;
-  background-color: #8965e0;
-  border-color: #8965e0;
-}
-
-.alert-purple .alert-link {
-  color: #683bd7;
-}
-
-.alert-soft-indigo {
-  color: #f5e8ff;
-  background-color: #f5e8ff;
-  border-color: #f5e8ff;
-}
-
-.alert-soft-indigo .alert-link {
-  color: #dfb5ff;
-}
-
-.alert-soft-green {
-  color: #2CA58D;
-  background-color: #2CA58D;
-  border-color: #2CA58D;
-}
-
-.alert-soft-green .alert-link {
-  color: #217d6b;
-}
-
-.alert-gray-100 {
-  color: #f3f7fa;
-  background-color: #f3f7fa;
-  border-color: #f3f7fa;
-}
-
-.alert-gray-100 .alert-link {
-  color: #cfdfeb;
-}
-
-.alert-gray-200 {
-  color: #f5f8fb;
-  background-color: #f5f8fb;
-  border-color: #f5f8fb;
-}
-
-.alert-gray-200 .alert-link {
-  color: #d1dfec;
-}
-
-.alert-gray-300 {
-  color: #F0F3F6;
-  background-color: #F0F3F6;
-  border-color: #F0F3F6;
-}
-
-.alert-gray-300 .alert-link {
-  color: #d0dae3;
-}
-
-.alert-gray-400 {
-  color: #eaedf2;
-  background-color: #eaedf2;
-  border-color: #eaedf2;
-}
-
-.alert-gray-400 .alert-link {
-  color: #cbd2df;
-}
-
-.alert-gray-500 {
-  color: #d1d7e0;
-  background-color: #d1d7e0;
-  border-color: #d1d7e0;
-}
-
-.alert-gray-500 .alert-link {
-  color: #b3bdcb;
-}
-
-.alert-gray-600 {
-  color: #93a5be;
-  background-color: #93a5be;
-  border-color: #93a5be;
-}
-
-.alert-gray-600 .alert-link {
-  color: #738aab;
-}
-
-.alert-gray-700 {
-  color: #66799e;
-  background-color: #66799e;
-  border-color: #66799e;
-}
-
-.alert-gray-700 .alert-link {
-  color: #516180;
-}
-
-.alert-gray-800 {
-  color: #506690;
-  background-color: #506690;
-  border-color: #506690;
-}
-
-.alert-gray-800 .alert-link {
-  color: #3e4f6f;
-}
-
-.alert-facebook {
-  color: #3b5999;
-  background-color: #3b5999;
-  border-color: #3b5999;
-}
-
-.alert-facebook .alert-link {
-  color: #2d4474;
-}
-
-.alert-twitter {
-  color: #1da1f2;
-  background-color: #1da1f2;
-  border-color: #1da1f2;
-}
-
-.alert-twitter .alert-link {
-  color: #0c85d0;
-}
-
-.alert-google {
-  color: #DB4337;
-  background-color: #DB4337;
-  border-color: #DB4337;
-}
-
-.alert-google .alert-link {
-  color: #bd2d22;
-}
-
-.alert-instagram {
-  color: #e4405f;
-  background-color: #e4405f;
-  border-color: #e4405f;
-}
-
-.alert-instagram .alert-link {
-  color: #d31e40;
-}
-
-.alert-pinterest {
-  color: #bd081c;
-  background-color: #bd081c;
-  border-color: #bd081c;
-}
-
-.alert-pinterest .alert-link {
-  color: #8c0615;
-}
-
-.alert-youtube {
-  color: #cd201f;
-  background-color: #cd201f;
-  border-color: #cd201f;
-}
-
-.alert-youtube .alert-link {
-  color: #a11918;
-}
-
-.alert-slack {
-  color: #3aaf85;
-  background-color: #3aaf85;
-  border-color: #3aaf85;
-}
-
-.alert-slack .alert-link {
-  color: #2d8968;
-}
-
-.alert-dribbble {
-  color: #ea4c89;
-  background-color: #ea4c89;
-  border-color: #ea4c89;
-}
-
-.alert-dribbble .alert-link {
-  color: #e51e6b;
-}
-
-.alert-dropbox {
-  color: #1E90FF;
-  background-color: #1E90FF;
-  border-color: #1E90FF;
-}
-
-.alert-dropbox .alert-link {
-  color: #0077ea;
-}
-
-.alert-twitch {
-  color: #4B367C;
-  background-color: #4B367C;
-  border-color: #4B367C;
-}
-
-.alert-twitch .alert-link {
-  color: #362758;
-}
-
-.alert-paypal {
-  color: #ecb32c;
-  background-color: #ecb32c;
-  border-color: #ecb32c;
-}
-
-.alert-paypal .alert-link {
-  color: #d29913;
-}
-
-.alert-behance {
-  color: #0057ff;
-  background-color: #0057ff;
-  border-color: #0057ff;
-}
-
-.alert-behance .alert-link {
-  color: #0046cc;
-}
-
-.alert-reddit {
-  color: #E84422;
-  background-color: #E84422;
-  border-color: #E84422;
-}
-
-.alert-reddit .alert-link {
-  color: #c33214;
-}
-
-.alert-github {
-  color: #222222;
-  background-color: #222222;
-  border-color: #222222;
-}
-
-.alert-github .alert-link {
-  color: #090909;
-}
-
-[data-notify="container"] {
-  width: auto !important;
-}
-
-[data-notify="container"] .alert {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: auto;
-}
-
-[data-notify="container"] .alert [data-notify="icon"] {
-  margin-right: .7rem;
-}
-
-[data-notify="container"] .alert [data-notify="message"] {
-  margin-right: 1rem;
-  margin-bottom: 0;
-}
-
-/**
  * = Avatars
  */
 .avatar + .avatar-content {
@@ -37483,6 +36926,1087 @@ label {
   border-left-color: #222222;
 }
 
+.choices__inner {
+  background-color: #ffffff;
+  border-color: #d1d7e0;
+  border-radius: 0.5rem;
+}
+
+.choices__list.choices__list--dropdown {
+  border-color: #d1d7e0;
+  margin-top: .5rem;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(14, 3, 87, 0.15);
+          box-shadow: 0 0.5rem 1rem rgba(14, 3, 87, 0.15);
+}
+
+.choices.is-focused .choices__inner, .choices .is-open .choices__inner {
+  background-color: #ffffff;
+  border-color: #d1d7e0;
+  border-radius: 0.5rem;
+}
+
+.choices__list--multiple .choices__item.is-highlighted {
+  background-color: #eaedf2;
+  border-color: #d1d7e0;
+}
+
+.is-disabled .choices__list--multiple .choices__item {
+  background-color: #eaedf2;
+  border-color: #d1d7e0;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+  background-color: #eaedf2;
+}
+
+.choices__input {
+  background-color: transparent;
+}
+
+.choices__list--multiple .choices__item {
+  background-color: #262B40;
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+/**
+ * = Shapes
+ */
+.pattern,
+.pattern {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-image: url("../assets/img/patterns/wave.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 1450px 160px;
+  height: 0;
+  padding: 0;
+  /* reset */
+  padding-bottom: 140px;
+}
+
+@media (max-width: 767.98px) {
+  .pattern,
+  .pattern {
+    background-size: 700px 203px;
+  }
+}
+
+.pattern.bottom,
+.pattern.bottom {
+  bottom: -10px;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.pattern.top,
+.pattern.top {
+  top: -10px;
+}
+
+.pattern-soft {
+  background-image: url("../assets/img/patterns/wave-soft.svg");
+}
+
+.organic-shape:not(.position-relative) {
+  position: absolute;
+}
+
+.organic-shape svg {
+  background: none !important;
+}
+
+.organic-shape.top {
+  top: 0;
+}
+
+.organic-shape.left {
+  left: 0;
+}
+
+.organic-shape.right {
+  right: 0;
+}
+
+.organic-shape.middle-y {
+  top: 50%;
+}
+
+.organic-shape.middle-x {
+  left: 50%;
+}
+
+.organic-shape.bottom {
+  bottom: 0;
+}
+
+.organic-shape.scale-2 svg {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+
+.organic-shape.scale-3 svg {
+  -webkit-transform: scale(3);
+          transform: scale(3);
+}
+
+.organic-shape.scale-4 svg {
+  -webkit-transform: scale(4);
+          transform: scale(4);
+}
+
+.organic-shape.scale-5 svg {
+  -webkit-transform: scale(5);
+          transform: scale(5);
+}
+
+.organic-shape-primary {
+  fill: rgba(163, 147, 37, 0.3);
+}
+
+.organic-shape-secondary {
+  fill: rgba(54, 38, 163, 0.3);
+}
+
+.organic-shape-tertiary {
+  fill: rgba(27, 153, 139, 0.3);
+}
+
+.organic-shape-quaternary {
+  fill: rgba(9, 72, 179, 0.3);
+}
+
+.organic-shape-primary-app {
+  fill: rgba(235, 244, 246, 0.3);
+}
+
+.organic-shape-secondary-app {
+  fill: rgba(66, 74, 160, 0.3);
+}
+
+.organic-shape-light {
+  fill: rgba(234, 237, 242, 0.3);
+}
+
+.organic-shape-lighten {
+  fill: rgba(240, 243, 246, 0.3);
+}
+
+.organic-shape-success {
+  fill: rgba(5, 166, 119, 0.3);
+}
+
+.organic-shape-info {
+  fill: rgba(9, 72, 179, 0.3);
+}
+
+.organic-shape-warning {
+  fill: rgba(245, 183, 89, 0.3);
+}
+
+.organic-shape-danger {
+  fill: rgba(250, 82, 82, 0.3);
+}
+
+.organic-shape-white {
+  fill: rgba(255, 255, 255, 0.3);
+}
+
+.organic-shape-gray {
+  fill: rgba(74, 80, 115, 0.3);
+}
+
+.organic-shape-neutral {
+  fill: rgba(255, 255, 255, 0.3);
+}
+
+.organic-shape-dark {
+  fill: rgba(38, 43, 64, 0.3);
+}
+
+.organic-shape-soft {
+  fill: rgba(245, 248, 251, 0.3);
+}
+
+.organic-shape-black {
+  fill: rgba(14, 3, 87, 0.3);
+}
+
+.organic-shape-blue {
+  fill: rgba(9, 72, 179, 0.3);
+}
+
+.organic-shape-pink {
+  fill: rgba(201, 100, 128, 0.3);
+}
+
+.organic-shape-cyan {
+  fill: rgba(99, 177, 189, 0.3);
+}
+
+.organic-shape-purple {
+  fill: rgba(137, 101, 224, 0.3);
+}
+
+.organic-shape-soft-indigo {
+  fill: rgba(245, 232, 255, 0.3);
+}
+
+.organic-shape-soft-green {
+  fill: rgba(44, 165, 141, 0.3);
+}
+
+.organic-shape-gray-100 {
+  fill: rgba(243, 247, 250, 0.3);
+}
+
+.organic-shape-gray-200 {
+  fill: rgba(245, 248, 251, 0.3);
+}
+
+.organic-shape-gray-300 {
+  fill: rgba(240, 243, 246, 0.3);
+}
+
+.organic-shape-gray-400 {
+  fill: rgba(234, 237, 242, 0.3);
+}
+
+.organic-shape-gray-500 {
+  fill: rgba(209, 215, 224, 0.3);
+}
+
+.organic-shape-gray-600 {
+  fill: rgba(147, 165, 190, 0.3);
+}
+
+.organic-shape-gray-700 {
+  fill: rgba(102, 121, 158, 0.3);
+}
+
+.organic-shape-gray-800 {
+  fill: rgba(80, 102, 144, 0.3);
+}
+
+.organic-shape-facebook {
+  fill: rgba(59, 89, 153, 0.3);
+}
+
+.organic-shape-twitter {
+  fill: rgba(29, 161, 242, 0.3);
+}
+
+.organic-shape-google {
+  fill: rgba(219, 67, 55, 0.3);
+}
+
+.organic-shape-instagram {
+  fill: rgba(228, 64, 95, 0.3);
+}
+
+.organic-shape-pinterest {
+  fill: rgba(189, 8, 28, 0.3);
+}
+
+.organic-shape-youtube {
+  fill: rgba(205, 32, 31, 0.3);
+}
+
+.organic-shape-slack {
+  fill: rgba(58, 175, 133, 0.3);
+}
+
+.organic-shape-dribbble {
+  fill: rgba(234, 76, 137, 0.3);
+}
+
+.organic-shape-dropbox {
+  fill: rgba(30, 144, 255, 0.3);
+}
+
+.organic-shape-twitch {
+  fill: rgba(75, 54, 124, 0.3);
+}
+
+.organic-shape-paypal {
+  fill: rgba(236, 179, 44, 0.3);
+}
+
+.organic-shape-behance {
+  fill: rgba(0, 87, 255, 0.3);
+}
+
+.organic-shape-reddit {
+  fill: rgba(232, 68, 34, 0.3);
+}
+
+.organic-shape-github {
+  fill: rgba(34, 34, 34, 0.3);
+}
+
+.fill-primary {
+  fill: #A39325;
+}
+
+.stroke-primary {
+  stroke: #A39325;
+}
+
+.fill-secondary {
+  fill: #3626A3;
+}
+
+.stroke-secondary {
+  stroke: #3626A3;
+}
+
+.fill-tertiary {
+  fill: #1B998B;
+}
+
+.stroke-tertiary {
+  stroke: #1B998B;
+}
+
+.fill-quaternary {
+  fill: #0948B3;
+}
+
+.stroke-quaternary {
+  stroke: #0948B3;
+}
+
+.fill-primary-app {
+  fill: #EBF4F6;
+}
+
+.stroke-primary-app {
+  stroke: #EBF4F6;
+}
+
+.fill-secondary-app {
+  fill: #424AA0;
+}
+
+.stroke-secondary-app {
+  stroke: #424AA0;
+}
+
+.fill-light {
+  fill: #eaedf2;
+}
+
+.stroke-light {
+  stroke: #eaedf2;
+}
+
+.fill-lighten {
+  fill: #F0F3F6;
+}
+
+.stroke-lighten {
+  stroke: #F0F3F6;
+}
+
+.fill-success {
+  fill: #05A677;
+}
+
+.stroke-success {
+  stroke: #05A677;
+}
+
+.fill-info {
+  fill: #0948B3;
+}
+
+.stroke-info {
+  stroke: #0948B3;
+}
+
+.fill-warning {
+  fill: #f5b759;
+}
+
+.stroke-warning {
+  stroke: #f5b759;
+}
+
+.fill-danger {
+  fill: #FA5252;
+}
+
+.stroke-danger {
+  stroke: #FA5252;
+}
+
+.fill-white {
+  fill: #ffffff;
+}
+
+.stroke-white {
+  stroke: #ffffff;
+}
+
+.fill-gray {
+  fill: #4A5073;
+}
+
+.stroke-gray {
+  stroke: #4A5073;
+}
+
+.fill-neutral {
+  fill: #ffffff;
+}
+
+.stroke-neutral {
+  stroke: #ffffff;
+}
+
+.fill-dark {
+  fill: #262B40;
+}
+
+.stroke-dark {
+  stroke: #262B40;
+}
+
+.fill-soft {
+  fill: #f5f8fb;
+}
+
+.stroke-soft {
+  stroke: #f5f8fb;
+}
+
+.fill-black {
+  fill: #0E0357;
+}
+
+.stroke-black {
+  stroke: #0E0357;
+}
+
+.fill-blue {
+  fill: #0948B3;
+}
+
+.stroke-blue {
+  stroke: #0948B3;
+}
+
+.fill-pink {
+  fill: #C96480;
+}
+
+.stroke-pink {
+  stroke: #C96480;
+}
+
+.fill-cyan {
+  fill: #63b1bd;
+}
+
+.stroke-cyan {
+  stroke: #63b1bd;
+}
+
+.fill-purple {
+  fill: #8965e0;
+}
+
+.stroke-purple {
+  stroke: #8965e0;
+}
+
+.fill-soft-indigo {
+  fill: #f5e8ff;
+}
+
+.stroke-soft-indigo {
+  stroke: #f5e8ff;
+}
+
+.fill-soft-green {
+  fill: #2CA58D;
+}
+
+.stroke-soft-green {
+  stroke: #2CA58D;
+}
+
+.fill-gray-100 {
+  fill: #f3f7fa;
+}
+
+.stroke-gray-100 {
+  stroke: #f3f7fa;
+}
+
+.fill-gray-200 {
+  fill: #f5f8fb;
+}
+
+.stroke-gray-200 {
+  stroke: #f5f8fb;
+}
+
+.fill-gray-300 {
+  fill: #F0F3F6;
+}
+
+.stroke-gray-300 {
+  stroke: #F0F3F6;
+}
+
+.fill-gray-400 {
+  fill: #eaedf2;
+}
+
+.stroke-gray-400 {
+  stroke: #eaedf2;
+}
+
+.fill-gray-500 {
+  fill: #d1d7e0;
+}
+
+.stroke-gray-500 {
+  stroke: #d1d7e0;
+}
+
+.fill-gray-600 {
+  fill: #93a5be;
+}
+
+.stroke-gray-600 {
+  stroke: #93a5be;
+}
+
+.fill-gray-700 {
+  fill: #66799e;
+}
+
+.stroke-gray-700 {
+  stroke: #66799e;
+}
+
+.fill-gray-800 {
+  fill: #506690;
+}
+
+.stroke-gray-800 {
+  stroke: #506690;
+}
+
+.fill-facebook {
+  fill: #3b5999;
+}
+
+.stroke-facebook {
+  stroke: #3b5999;
+}
+
+.fill-twitter {
+  fill: #1da1f2;
+}
+
+.stroke-twitter {
+  stroke: #1da1f2;
+}
+
+.fill-google {
+  fill: #DB4337;
+}
+
+.stroke-google {
+  stroke: #DB4337;
+}
+
+.fill-instagram {
+  fill: #e4405f;
+}
+
+.stroke-instagram {
+  stroke: #e4405f;
+}
+
+.fill-pinterest {
+  fill: #bd081c;
+}
+
+.stroke-pinterest {
+  stroke: #bd081c;
+}
+
+.fill-youtube {
+  fill: #cd201f;
+}
+
+.stroke-youtube {
+  stroke: #cd201f;
+}
+
+.fill-slack {
+  fill: #3aaf85;
+}
+
+.stroke-slack {
+  stroke: #3aaf85;
+}
+
+.fill-dribbble {
+  fill: #ea4c89;
+}
+
+.stroke-dribbble {
+  stroke: #ea4c89;
+}
+
+.fill-dropbox {
+  fill: #1E90FF;
+}
+
+.stroke-dropbox {
+  stroke: #1E90FF;
+}
+
+.fill-twitch {
+  fill: #4B367C;
+}
+
+.stroke-twitch {
+  stroke: #4B367C;
+}
+
+.fill-paypal {
+  fill: #ecb32c;
+}
+
+.stroke-paypal {
+  stroke: #ecb32c;
+}
+
+.fill-behance {
+  fill: #0057ff;
+}
+
+.stroke-behance {
+  stroke: #0057ff;
+}
+
+.fill-reddit {
+  fill: #E84422;
+}
+
+.stroke-reddit {
+  stroke: #E84422;
+}
+
+.fill-github {
+  fill: #222222;
+}
+
+.stroke-github {
+  stroke: #222222;
+}
+
+.shape-primary {
+  background-color: #A39325;
+}
+
+.shape-primary .step-number {
+  background-color: #A39325;
+}
+
+.shape-secondary {
+  background-color: #3626A3;
+}
+
+.shape-secondary .step-number {
+  background-color: #3626A3;
+}
+
+.shape-tertiary {
+  background-color: #1B998B;
+}
+
+.shape-tertiary .step-number {
+  background-color: #1B998B;
+}
+
+.shape-quaternary {
+  background-color: #0948B3;
+}
+
+.shape-quaternary .step-number {
+  background-color: #0948B3;
+}
+
+.shape-primary-app {
+  background-color: #EBF4F6;
+}
+
+.shape-primary-app .step-number {
+  background-color: #EBF4F6;
+}
+
+.shape-secondary-app {
+  background-color: #424AA0;
+}
+
+.shape-secondary-app .step-number {
+  background-color: #424AA0;
+}
+
+.shape-light {
+  background-color: #eaedf2;
+}
+
+.shape-light .step-number {
+  background-color: #eaedf2;
+}
+
+.shape-lighten {
+  background-color: #F0F3F6;
+}
+
+.shape-lighten .step-number {
+  background-color: #F0F3F6;
+}
+
+.shape-success {
+  background-color: #05A677;
+}
+
+.shape-success .step-number {
+  background-color: #05A677;
+}
+
+.shape-info {
+  background-color: #0948B3;
+}
+
+.shape-info .step-number {
+  background-color: #0948B3;
+}
+
+.shape-warning {
+  background-color: #f5b759;
+}
+
+.shape-warning .step-number {
+  background-color: #f5b759;
+}
+
+.shape-danger {
+  background-color: #FA5252;
+}
+
+.shape-danger .step-number {
+  background-color: #FA5252;
+}
+
+.shape-white {
+  background-color: #ffffff;
+}
+
+.shape-white .step-number {
+  background-color: #ffffff;
+}
+
+.shape-gray {
+  background-color: #4A5073;
+}
+
+.shape-gray .step-number {
+  background-color: #4A5073;
+}
+
+.shape-neutral {
+  background-color: #ffffff;
+}
+
+.shape-neutral .step-number {
+  background-color: #ffffff;
+}
+
+.shape-dark {
+  background-color: #262B40;
+}
+
+.shape-dark .step-number {
+  background-color: #262B40;
+}
+
+.shape-soft {
+  background-color: #f5f8fb;
+}
+
+.shape-soft .step-number {
+  background-color: #f5f8fb;
+}
+
+.shape-black {
+  background-color: #0E0357;
+}
+
+.shape-black .step-number {
+  background-color: #0E0357;
+}
+
+.shape-blue {
+  background-color: #0948B3;
+}
+
+.shape-blue .step-number {
+  background-color: #0948B3;
+}
+
+.shape-pink {
+  background-color: #C96480;
+}
+
+.shape-pink .step-number {
+  background-color: #C96480;
+}
+
+.shape-cyan {
+  background-color: #63b1bd;
+}
+
+.shape-cyan .step-number {
+  background-color: #63b1bd;
+}
+
+.shape-purple {
+  background-color: #8965e0;
+}
+
+.shape-purple .step-number {
+  background-color: #8965e0;
+}
+
+.shape-soft-indigo {
+  background-color: #f5e8ff;
+}
+
+.shape-soft-indigo .step-number {
+  background-color: #f5e8ff;
+}
+
+.shape-soft-green {
+  background-color: #2CA58D;
+}
+
+.shape-soft-green .step-number {
+  background-color: #2CA58D;
+}
+
+.shape-gray-100 {
+  background-color: #f3f7fa;
+}
+
+.shape-gray-100 .step-number {
+  background-color: #f3f7fa;
+}
+
+.shape-gray-200 {
+  background-color: #f5f8fb;
+}
+
+.shape-gray-200 .step-number {
+  background-color: #f5f8fb;
+}
+
+.shape-gray-300 {
+  background-color: #F0F3F6;
+}
+
+.shape-gray-300 .step-number {
+  background-color: #F0F3F6;
+}
+
+.shape-gray-400 {
+  background-color: #eaedf2;
+}
+
+.shape-gray-400 .step-number {
+  background-color: #eaedf2;
+}
+
+.shape-gray-500 {
+  background-color: #d1d7e0;
+}
+
+.shape-gray-500 .step-number {
+  background-color: #d1d7e0;
+}
+
+.shape-gray-600 {
+  background-color: #93a5be;
+}
+
+.shape-gray-600 .step-number {
+  background-color: #93a5be;
+}
+
+.shape-gray-700 {
+  background-color: #66799e;
+}
+
+.shape-gray-700 .step-number {
+  background-color: #66799e;
+}
+
+.shape-gray-800 {
+  background-color: #506690;
+}
+
+.shape-gray-800 .step-number {
+  background-color: #506690;
+}
+
+.shape-facebook {
+  background-color: #3b5999;
+}
+
+.shape-facebook .step-number {
+  background-color: #3b5999;
+}
+
+.shape-twitter {
+  background-color: #1da1f2;
+}
+
+.shape-twitter .step-number {
+  background-color: #1da1f2;
+}
+
+.shape-google {
+  background-color: #DB4337;
+}
+
+.shape-google .step-number {
+  background-color: #DB4337;
+}
+
+.shape-instagram {
+  background-color: #e4405f;
+}
+
+.shape-instagram .step-number {
+  background-color: #e4405f;
+}
+
+.shape-pinterest {
+  background-color: #bd081c;
+}
+
+.shape-pinterest .step-number {
+  background-color: #bd081c;
+}
+
+.shape-youtube {
+  background-color: #cd201f;
+}
+
+.shape-youtube .step-number {
+  background-color: #cd201f;
+}
+
+.shape-slack {
+  background-color: #3aaf85;
+}
+
+.shape-slack .step-number {
+  background-color: #3aaf85;
+}
+
+.shape-dribbble {
+  background-color: #ea4c89;
+}
+
+.shape-dribbble .step-number {
+  background-color: #ea4c89;
+}
+
+.shape-dropbox {
+  background-color: #1E90FF;
+}
+
+.shape-dropbox .step-number {
+  background-color: #1E90FF;
+}
+
+.shape-twitch {
+  background-color: #4B367C;
+}
+
+.shape-twitch .step-number {
+  background-color: #4B367C;
+}
+
+.shape-paypal {
+  background-color: #ecb32c;
+}
+
+.shape-paypal .step-number {
+  background-color: #ecb32c;
+}
+
+.shape-behance {
+  background-color: #0057ff;
+}
+
+.shape-behance .step-number {
+  background-color: #0057ff;
+}
+
+.shape-reddit {
+  background-color: #E84422;
+}
+
+.shape-reddit .step-number {
+  background-color: #E84422;
+}
+
+.shape-github {
+  background-color: #222222;
+}
+
+.shape-github .step-number {
+  background-color: #222222;
+}
+
+.organic-radius {
+  border-radius: 63% 37% 30% 70% / 50% 45% 55% 50%;
+}
+
+.avatar-sm {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.avatar-md {
+  width: 2rem;
+  height: 2rem;
+}
+
+.avatar-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.color-shape {
+  width: 7rem;
+  height: 7rem;
+}
+
 /**steps
  * = Accordions
  */
@@ -38071,7 +38595,7 @@ label {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Noto Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 p, ol li, ul li, .p {

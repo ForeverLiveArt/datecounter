@@ -40,17 +40,18 @@ async function navbarlogin() {
                                 <span class="mb-0 font-small font-weight-bold">` + answer.user.name + `</span>
                             </div>
                           `);
-        $("#logins_container").css("display:flex;");                 
+        $("#logins_container").css('display', 'flex');
+        $("#wellcome").css('display', 'none');            
         $("#banks").append(`                           
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
-                                <span class="mb-0 font-small font-weight-bold">На вашем счету ` + answer.bank + ` USD</span>
+                                <span class="mb-0 font-small font-weight-bold">Баланс ` + answer.bank + ` USD</span>
                             </div>
                       `);
-        $("#banks_container").css("visibility: visible");
+        $("#banks_container").css('visibility', 'visible');
     } else {
         console.log(answer.isLogged);
-        $("#logins_container, banks_container").css("display:none;");   
-        $("#wellcome").css("display:flex;");   
+        $("#logins_container, banks_container").css('display', 'none');
+        $("#wellcome").css('display', 'flex');
         $("#logins_mobile, #logins, #banks").empty();
         
 

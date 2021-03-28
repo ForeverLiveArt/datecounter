@@ -3,13 +3,13 @@
 <body onload="checkDate()">
 
 	<%- include('partials/header', {title:'Детская нумерология'}); %>
-	<main class="content p-2">
+	<main class="content p-2" style="background-image: url('img/cloud.png')">
 		<%- include('partials/navbar'); %>
-
+    <!--Description-->
 		<div class="row justify-content-md-center">
 			<div class="col-12 mb-4" id="description_title">
 				<div class="card bg-secondary-alt shadow-sm">
-					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
+					<div class="card-header d-sm-flex flex-row align-items-center flex-0 gradient-yellow-overlay">
 						<h3>Детская нумерология <br> Воспитание кармой</h3>
 					</div>
 					<div class="card-body p-4">
@@ -29,10 +29,15 @@
 							или иной области. Именно эти 100 дней могут сделать человека честным и щедрым или
 							жадным и подлым. Вернуться к тому, что уже прошло – не возможно.<br>
 						</article>
+						
+					</div>
+					<div class="card-body p-0">
+						<img src="img/kid.jpg" class="img-fluid" alt="Responsive image" style="border-radius:0.5rem">
 					</div>
 				</div>
 			</div>
 		</div>
+		<!--Date_input-->
 		<div class="row justify-content-md-center">
 			<div class="col-12 mb-4" id="description_title">
 				<div class="card bg-secondary-alt shadow-sm">
@@ -54,19 +59,20 @@
 							<input type="number" id="dateInputYear" class="form-control" placeholder="ГГГГ" aria-label="Год"
 								aria-describedby="basic-addon1" min="1799" max="2021" step="1" maxlength=4
 								onkeyup="moveOnMax(this, 'dateInputYear')" pattern="[0-9]{4}">
-
+						<!--Submit-button-->
 						</div>
-						<button onclick="checkDate()" class="btn btn-primary mb-2 me-2" type="button" id="birth_date_form_button">
-							<i class="fas fa-play me-2"></i> Произвести рассчёт уроков</button>
-
 						<div id="alerts"></div>
+						<button onclick="checkDate()" class="btn btn-primary mb-2 me-2" type="button" id="main_form_button">
+							<i class="fas fa-play me-2"></i>  Произвести рассчёт</button>
+
+						
 
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="row justify-content-md-center" id="kids_result_container" style="display: none;">
+		<!--Result-->
+		<div class="row justify-content-md-center" id="result_container" style="display: none;">
 			<div class="col-12 mb-4" id="description_title">
 				<div class="card bg-secondary-alt shadow-sm">
 					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
@@ -85,7 +91,7 @@
 							<ul class="nav nav-pills nav-fill flex-column flex-md-row px-4" id="myTab" role="tablist">
 								<li class="nav-item" role="presentation">
 									<a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#contentOPV" role="tab"
-										aria-controls="contentOPV" aria-selected="true">Рассчет ОПВ</a>
+										aria-controls="contentOPV" aria-selected="true">Таблица обучения</a>
 								</li>
 								<li class="nav-item" role="presentation">
 									<a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#contentregrets" role="tab"
@@ -97,8 +103,6 @@
 						<div class="tab-content" id="myTabContent" style="display: none;">
 
 							<div class="tab-pane fade show active" id="contentOPV" role="tabpanel" aria-labelledby="Рассчет ОПВ">
-
-
 
 								<table class="table table-bordered table-hover" id="table1">
 									<caption class="px-4">*л, м, д – лет, месяцев, дней</caption>

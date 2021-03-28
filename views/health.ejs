@@ -1,141 +1,120 @@
 <%- include('partials/head'); %>
 
-	<body onload="checkDate()">
+<body onload="checkDate()">
 
-		<%- include('partials/header', {title:'Детская нумерология'}); %>
-		<main class="content p-2">
-		<%- include('partials/navbar'); %>	
-	
+	<%- include('partials/header', {title:'Детская нумерология'}); %>
+	<main class="content p-2" >
+		<%- include('partials/navbar'); %>
+
 		<div class="row justify-content-md-center">
 			<div class="col-12 mb-4" id="description_title">
 				<div class="card bg-secondary-alt shadow-sm">
 					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
-						<h3>График здоровья <br> Воспитание кармой</h3>
+						<h3>Бионагрузка.<br>График Биоритмов</h3>
 					</div>
 					<div class="card-body p-4">
 						<article>
 							<b>Карма</b> – это программа, созданная для воспитания человека. Её задача – помочь нашей душе
 							гармонично развиваться и эволюционировать.
 							Карма дает нам уроки, пройдя которые мы переходим на новый уровень.<br><br>
-							Существует 22 вида уроков. Период первого урока – 100 дней, на протяжении которых 
-							формируется моральный облик ребенка на всю жизнь. 
+							Существует 22 вида уроков. Период первого урока – 100 дней, на протяжении которых
+							формируется моральный облик ребенка на всю жизнь.
 							Эти уроки каждый человек проходит в первые 6 лет жизни. И задача родителей помочь ребенку достойно
 							освоить их.<br><br>
-							Ребёнок не случайно попадает в ту или иную среду. Душа выбирает себе родителей, способных 
-							создать наилучшие условия для прохождения испытаний. И на практике мы часто видим, как в неблагополучных 
-							семьях вырастают гении. А бывает и наоборот, когда ребенок, воспитываясь в очень обеспеченной семье 
-							способен на воровство. Есть всего 100 дней в целой жизни, которые закладывают в ребенке отношение к той или иной
+							Ребёнок не случайно попадает в ту или иную среду. Душа выбирает себе родителей, способных
+							создать наилучшие условия для прохождения испытаний. И на практике мы часто видим, как в неблагополучных
+							семьях вырастают гении. А бывает и наоборот, когда ребенок, воспитываясь в очень обеспеченной семье
+							способен на воровство. Есть всего 100 дней в целой жизни, которые закладывают в ребенке отношение к той
+							или иной
 							области. Именно эти 100 дней могут сделать человека честным и щедрым или
 							жадным и подлым. Вернуться к тому, что уже прошло – не возможно.<br>
 						</article>
 					</div>
-				</div>	
-			</div>
-	</div>
-	<div class="row justify-content-md-center">	
-		<div class="col-12 mb-4" id="description_title">
-			<div class="card bg-secondary-alt shadow-sm">
-				<div class="card-header d-sm-flex flex-row align-items-center flex-0">
-					<h5>Введите фамилию имя и отчество на родном языке. <br>
-						Дату и время рождения:</h5>
 				</div>
-				<div class="card-body p-4" id="health_main">
-	
-					<div class="input-group mb-3">
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-12 mb-4" id="description_title">
+				<div class="card bg-secondary-alt shadow-sm">
+					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
+						<h5>Введите фамилию имя и отчество на родном языке. <br>
+							Дату и время рождения:</h5>
+					</div>
+					<div class="card-body p-4" id="health_main">
+
+						<div class="input-group mb-3">
 							<span class="input-group-text" id="basic-addon1">
 								Дата
 							</span>
-							<input type="number" id="dateInputDay" class="form-control" 
-									placeholder="ДД" aria-label="День" 
-									aria-describedby="basic-addon1" 
-									min="01" max="31" step="1" maxlength="2" 
-									onkeyup="moveOnMax(this, 'dateInputMonth')"
-									onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
-				
-							<input type="number" id="dateInputMonth" class="form-control" 
-									placeholder="ММ" aria-label="Месяц" 
-									aria-describedby="basic-addon1"
-									min="01" max="12" step="1" maxlength="2" 
-									onkeyup="moveOnMax(this, 'dateInputYear')"
-									onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+							<input type="number" id="dateInputDay" class="form-control" placeholder="ДД" aria-label="День"
+								aria-describedby="basic-addon1" min="01" max="31" step="1" maxlength="2"
+								onkeyup="moveOnMax(this, 'dateInputMonth')" onchange="leadingZeros(this); checkDate()"
+								pattern="[00-09]{2}">
 
-							<input type="number" id="dateInputYear" class="form-control" 
-									placeholder="ГГГГ" aria-label="Год" 
-									aria-describedby="basic-addon1"
-									min="1799" max="2021" step="1" maxlength="4" 
-									onkeyup="moveOnMax(this, 'dateInputHour')"
-									onchange="checkDate()" pattern="[0-9]{4}">
-					</div>
+							<input type="number" id="dateInputMonth" class="form-control" placeholder="ММ" aria-label="Месяц"
+								aria-describedby="basic-addon1" min="01" max="12" step="1" maxlength="2"
+								onkeyup="moveOnMax(this, 'dateInputYear')" onchange="leadingZeros(this); checkDate()"
+								pattern="[00-09]{2}">
 
-					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1">
-							Время
-						</span>
-						<input type="number" id="dateInputHour" class="form-control" 
-								placeholder="ЧЧ" aria-label="Часов" 
-								aria-describedby="basic-addon1" 
-								min="00" max="24" step="1" maxlength="2" 
-								onkeyup="moveOnMax(this, 'dateInputMinute')"
-								onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+							<input type="number" id="dateInputYear" class="form-control" placeholder="ГГГГ" aria-label="Год"
+								aria-describedby="basic-addon1" min="1799" max="2021" step="1" maxlength="4"
+								onkeyup="moveOnMax(this, 'dateInputHour')" onchange="checkDate()" pattern="[0-9]{4}">
+						</div>
 
-						<input type="number" id="dateInputMinute" class="form-control" 
-								placeholder="ММ" aria-label="Минут" 
-								aria-describedby="basic-addon1"
-								min="00" max="59" step="1" maxlength="2" 
-								onkeyup="moveOnMax(this, 'nameString')"
-								onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
-					</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text" id="basic-addon1">
+								Время
+							</span>
+							<input type="number" id="dateInputHour" class="form-control" placeholder="ЧЧ" aria-label="Часов"
+								aria-describedby="basic-addon1" min="00" max="24" step="1" maxlength="2"
+								onkeyup="moveOnMax(this, 'dateInputMinute')" onchange="leadingZeros(this); checkDate()"
+								pattern="[00-09]{2}">
 
-					<div class="input-group mb-3">
-						<span class="input-group-text" id="basic-addon1">
-							Имя
-						</span>
-						<input type="text" id="nameString" class="form-control" 
-								placeholder="Фамилия Имя Отчество" aria-label="Фамилия Имя Отчество" 
-								aria-describedby="basic-addon1" 
-								maxlength="50" onchange="checkDate()">
-					</div>
+							<input type="number" id="dateInputMinute" class="form-control" placeholder="ММ" aria-label="Минут"
+								aria-describedby="basic-addon1" min="00" max="59" step="1" maxlength="2"
+								onkeyup="moveOnMax(this, 'nameString')" onchange="leadingZeros(this); checkDate()" pattern="[00-09]{2}">
+						</div>
 
-					<div class="input-group mb-3">
+						<div class="input-group mb-3">
+							<span class="input-group-text" id="basic-addon1">
+								Имя
+							</span>
+							<input type="text" id="nameString" class="form-control" placeholder="Фамилия Имя Отчество"
+								aria-label="Фамилия Имя Отчество" aria-describedby="basic-addon1" maxlength="50" onchange="checkDate()">
+						</div>
+
+						<div class="input-group mb-3">
 							<span class="input-group-text" id="basic-addon0">
 								Язык
 							</span>
-									<select class="form-select" aria-label="Local" id="langString" onchange="checkDate()">
-											<option value="0">English</option>
-											<option value="1" selected>Русский</option>
-											<option value="2">Slovensky</option>
-									</select>
-				</div>
-			
+							<select class="form-select" aria-label="Local" id="langString" onchange="checkDate()">
+								<option value="0">English</option>
+								<option value="1" selected>Русский</option>
+								<option value="2">Slovensky</option>
+							</select>
+						</div>
 
+						<div id="alerts"></div>
 
-			<div id="alerts"></div>
-
-			<div class="d-flex justify-content-center" >
-					<div class="spinner-border" role="status" id="spinners" style="display: none;">
-							<span class="sr-only">Loading...</span>
+						<div class="d-flex justify-content-center">
+							<div class="spinner-border" role="status" id="spinners" style="display: none;">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
 					</div>
-			</div>	
-		</div>
 
-		<canvas id="myChart" style="display:none;"></canvas>
+					<canvas id="myChart" style="display:none;"></canvas>
 
+				</div>
 
-			
-
-
-			
-
-		</div>
-
-	</div>
+			</div>
 
 
-	<%- include('partials/footer'); %>
-	</main>		
+			<%- include('partials/footer'); %>
+	</main>
 	<script src="script/health_script.js"></script>
 
-	</body>
+</body>
 
 
 </html>

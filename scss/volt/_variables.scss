@@ -552,7 +552,7 @@ $line-height-lg:              2;
 
 $h1-font-size:                $font-size-base * 2.5;
 $h2-font-size:                $font-size-base * 2;
-$h3-font-size:                $font-size-base * 1.75;
+$h3-font-size:                $font-size-base * 2;
 $h4-font-size:                $font-size-base * 1.5;
 $h5-font-size:                $font-size-base * 1.25;
 $h6-font-size:                $font-size-base;
@@ -560,7 +560,7 @@ $h6-font-size:                $font-size-base;
 $headings-margin-bottom:      $spacer / 2;
 $headings-font-family:        null;
 $headings-font-style:         null;
-$headings-font-weight:        $font-weight-bold;
+$headings-font-weight:        $font-weight-normal;
 $headings-line-height:        1.3;
 $headings-color:              $dark;
 

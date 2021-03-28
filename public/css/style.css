@@ -71,3 +71,8 @@ thead {
     --bs-table-accent-bg: white !important;
 
 }
+
+.gradient-yellow-overlay {
+    background: rgb(240,218,79);
+    background: linear-gradient(207deg, rgba(240,218,79,1) 2%, rgba(255,255,255,1) 43%);
+}
