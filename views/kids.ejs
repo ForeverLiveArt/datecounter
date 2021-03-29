@@ -32,7 +32,7 @@
 						
 					</div>
 					<div class="card-body p-0">
-						<img src="img/kid.jpg" class="img-fluid" alt="Responsive image" style="border-radius:0.5rem">
+						<img src="img/kid.jpg" class="img-fluid" alt="Responsive image" style="border-radius:0.5rem" id="result_scroll">
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 		<div class="row justify-content-md-center">
 			<div class="col-12 mb-4" id="description_title">
 				<div class="card bg-secondary-alt shadow-sm">
-					<div class="card-header d-sm-flex flex-row align-items-center flex-0">
+					<div class="card-header d-sm-flex flex-row align-items-center flex-0" >
 						<h5>Введите дату рождения ребёнка</h5>
 					</div>
 					<div class="card-body p-4">
@@ -58,11 +58,11 @@
 
 							<input type="number" id="dateInputYear" class="form-control" placeholder="ГГГГ" aria-label="Год"
 								aria-describedby="basic-addon1" min="1799" max="2021" step="1" maxlength=4
-								onkeyup="moveOnMax(this, 'dateInputYear')" pattern="[0-9]{4}">
+								onkeyup="moveOnMax(this, 'main_form_button')" pattern="[0-9]{4}">
 						<!--Submit-button-->
 						</div>
 						<div id="alerts"></div>
-						<button onclick="checkDate()" class="btn btn-primary mb-2 me-2" type="button" id="main_form_button">
+						<button onclick="checkDate()" class="btn btn-primary mb-2 me-2 main_form_button" type="button" id="main_form_button">
 							<i class="fas fa-play me-2"></i>  Произвести рассчёт</button>
 
 						
@@ -105,12 +105,11 @@
 							<div class="tab-pane fade show active" id="contentOPV" role="tabpanel" aria-labelledby="Рассчет ОПВ">
 
 								<table class="table table-bordered table-hover" id="table1">
-									<caption class="px-4">*л, м, д – лет, месяцев, дней</caption>
+									<caption class="px-4">*ОПВ - Ошибки Прошлых Воплощений</caption>
 									<thead class="table-light">
 										<tr>
 											<th scope="col">Период</th>
-											<th scope="col">Возраст*</th>
-											<th scope="col">ОПВ**</th>
+											<th scope="col" style="width: 25%">ОПВ*</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -134,10 +133,13 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="row justify-content-md-center" id="result_container" >
+			<img src="img/num_logo.svg" class="img-fluid" alt="Responsive image" style="max-width:10rem;opacity: 0.3;padding-top: 5rem;">
+		</div>
 
 		<%- include('partials/footer'); %>
 	</main>
+	
 	<script src="script/kids_script.js"></script>
 
 </body>

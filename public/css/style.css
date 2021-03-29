@@ -68,11 +68,18 @@ thead {
 
 .tr_unhoverable:hover { 
     background-color:white!important;
-    --bs-table-accent-bg: white !important;
+    --bs-table-accent-bg: white !important; /* fix accordeon */
 
 }
 
-.gradient-yellow-overlay {
-    background: rgb(240,218,79);
-    background: linear-gradient(207deg, rgba(240,218,79,1) 2%, rgba(255,255,255,1) 43%);
+.fa-times::before {
+    font-size: 1.5rem; /*bigger close button */
+  }
+  
+@media screen and (max-width: 800px) {.navbar-expand .navbar-nav .dropdown-menu {
+    position: relative; /*fix account menu*/
+    }
+  #myTab { 
+      width: 100%;
+    }
 }

@@ -14,7 +14,9 @@ function leadingZeros(input) {
   }
 
 function moveOnMax(field, nextFieldID) {
+
     if (field.value.length === field.maxLength) {
+        document.getElementById(nextFieldID).value='';
         document.getElementById(nextFieldID).focus();
     }
 }
@@ -34,7 +36,7 @@ function checkDate() { //валидация ввода
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <span class="fas fa-bullhorn me-1"></span>
                             <strong>Внимание!</strong> Дата введена в неправильном формате
-                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"><i class="fas fa-times"></i></button>
                             </div>
                             `);
     }
@@ -69,9 +71,10 @@ async function calculateOPV(dateString) {
         $('#main_form_button').removeClass( 'btn-primary' ).removeClass( 'btn-danger' ).addClass( 'btn-success' ); //button green
         $('#alerts').empty(); //очистить ошибки если их нет
 
-        $('#myTabContent').css('display', 'none'); //hide old result if it was visible
+        $('#myTabContent').hide(); //hide old result if it was visible
         
-        $('#spinners').css('display', 'flex');
+        $('#spinners').show();
+
 
         $("#table1 tbody tr").remove(); // очистить таблицу перед новой датой
         $("#learnage_container").empty();
@@ -85,22 +88,22 @@ async function calculateOPV(dateString) {
             '<tr data-bs-toggle="collapse" id="tr_slide0"' +
             'data-bs-target="#accord0"' +
             'aria-controls="accord0">' +
-                    '<td>' + Dateimp(answer.dateCounter[i]).toFormat('dd.MM.yyyy') + ' – ' +
-                            Dateimp(answer.dateCounter[i + 1]).toFormat('dd.MM.yyyy') + '</td>' +
-                    '<td>' + Durimp(answer.diffInTime[i]).years.toFixed(0) + ', ' +
-                            Durimp(answer.diffInTime[i]).months.toFixed(0) + ', ' +
-                            Durimp(answer.diffInTime[i]).days.toFixed(0) + '</td>' +
+                    '<td>Период с ' +   Dateimp(answer.dateCounter[i]).toFormat('dd.MM.yyyy') + ' до ' +
+                                        Dateimp(answer.dateCounter[i + 1]).toFormat('dd.MM.yyyy') + '</td>' +
+
                     '<td>' + answer.opv1[i] + '</td>' +
             '</tr>' +
             '<tr class="tr_unhoverable">' +
                 '<td colspan="3" class="collapse show multi-collapse mt-3" data-bs-parent="#table1" id="accord0">' +
                     '<div class="fs-6 p-0">' +
-                        '<h3>Знак ' + answer.opv1[i] + '</h3>' +
+                        '<h3>Возраст ' +    Durimp(answer.diffInTime[i]).years.toFixed(0) + ', ' +
+                                            Durimp(answer.diffInTime[i]).months.toFixed(0) + ', ' +
+                                            Durimp(answer.diffInTime[i]).days.toFixed(0) + '</h3>' +
                         '<article class="readmore">' +
                         kidsTextArray[0][answer.opv1[i]] +
                     '</article><a href="#tr_slide' + i + '" role="button" data-bs-toggle="collapse"' +
                     'data-bs-target="#accord1"' +
-                    'aria-controls="#accord1" type="button" class="btn btn-outline-secondary mb-3">Следующий период →</a></div>' +
+                    'aria-controls="#accord1" type="button" class="btn btn-outline-secondary scroller mb-3">Следующий период →</a></div>' +
                 '</td>' +
             '</tr>'            
         );
@@ -113,17 +116,17 @@ async function calculateOPV(dateString) {
                 'data-bs-target="#accord' + i + '"' +
                 'aria-expanded="false"' +
                 'aria-controls="accord' + i + '">' +
-                '<td>' + Dateimp(answer.dateCounter[i]).toFormat('dd.MM.yyyy') + ' – ' +
-                         Dateimp(answer.dateCounter[i + 1]).toFormat('dd.MM.yyyy') + '</td>' +
-                '<td>' + Durimp(answer.diffInTime[i]).years.toFixed(0) + ', ' +
-                         Durimp(answer.diffInTime[i]).months.toFixed(0) + ', ' +
-                         Durimp(answer.diffInTime[i]).days.toFixed(0) + '</td>' +
+                '<td>Период с ' +   Dateimp(answer.dateCounter[i]).toFormat('dd.MM.yyyy') + ' до ' +
+                                    Dateimp(answer.dateCounter[i + 1]).toFormat('dd.MM.yyyy') + '</td>' +
+                
                 '<td>' + answer.opv1[i] + '</td>' +
             '</tr>' +
             '<tr class="tr_unhoverable">' +
                 '<td colspan="3" class="collapse multi-collapse mt-3" data-bs-parent="#table1" id="accord' + i + '">' +
                     '<div class="fs-6 p-0" style="background-color:white!important;">' +
-                    '<h3>Знак ' + answer.opv1[i] + '</h3>' +
+                    '<h3>Возраст ' +    Durimp(answer.diffInTime[i]).years.toFixed(0) + ', ' +
+                                        Durimp(answer.diffInTime[i]).months.toFixed(0) + ', ' +
+                                        Durimp(answer.diffInTime[i]).days.toFixed(0) + '</h3>' +
                     '<article class="readmore">' +
                         kidsTextArray[answer.opv1[i]] +
                     '</article>' +
@@ -156,6 +159,7 @@ async function calculateOPV(dateString) {
 
         $readMoreJS.init({
               target: '.readmore', 
+              speed: 120,
               numOfWords: 49,     
               // If true, user can toggle between 'read more' and 'read less'. 
               toggle: true,              
@@ -167,27 +171,30 @@ async function calculateOPV(dateString) {
               containerClass: 'readmorecls'
         });    
         //_____________________________________________________________________CONTROL DISPLAY OPTIONS
-        $('#spinners').css('display', 'none');
-        $('#myTabContent').css('display', 'initial');
-        $('#tabulation').css('display', 'initial');
-        $('#result_container').css('display', 'flex'); //show result
-        $('#spinners').css('display', 'none'); //hide spinner in the end
+        $('#spinners').hide(200);
+        $('#myTabContent').show(400);
+        $('#tabulation').show(400);
+        $('#result_container').show(400); //show result
+        $('#spinners').hide(200); //hide spinner in the end
         //_____________________________________________________________________
-        $('.scroller').click(function() { //следующий знак прокрутка страницы
+        $('.scroller').on("click", function() { //следующий знак прокрутка страницы
             let sectionTo = $(this).attr('href');
-            $.scrollTo(sectionTo);
+            $.scrollTo(sectionTo, 800);
 
+        });
+        $('.main_form_button').on("click", function() { //следующий знак прокрутка страницы
+            $.scrollTo($('result_scroll'), 800);
         });
 
     } else {
-        $('#spinners').css('display', 'none');
+        $('#spinners').hide(200);
         $('#main_form_button').removeClass( 'btn-primary' ).addClass( 'btn-danger' );
         $('#birth_date_form').removeClass( 'is-valid' ).addClass( 'is-invalid' );
         $('#alerts').prepend(` 
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <span class="fas fa-bullhorn me-1"></span>
                             <strong>Внимание!</strong> Дата введена в неправильном формате
-                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"><i class="fas fa-times"></i></button>
                             </div>
                             `);
     }
